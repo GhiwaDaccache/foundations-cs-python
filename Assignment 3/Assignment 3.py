@@ -12,14 +12,14 @@ def displayMenu():
               )
 # displayMenu function here, prints out all the options the user can choose from.
 def addMatrices():
-    main_matrix = []
+    matrix1 = []
     rows = int(input("Enter the number of rows: "))
     columns = int(input("Enter the number of columns: "))
     for row in range(rows):
-        main_matrix.append([])
+        matrix1.append([])
         for column in range(columns):
-            numbers = int(input("Enter the elements of your matrix: "))
-    print(main_matrix)
+            numbers = int(input("Enter elements of your matrix: "))
+    print(matrix1)
             
 addMatrices()
 
