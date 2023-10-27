@@ -14,7 +14,12 @@ def displayMenu():
 
 rows = int(input("Enter the number of rows for your matrices: "))
 columns = int(input("Enter the number of columns for your matrices: "))
+while rows <= 0 or columns <= 0:
+    print("Please enter an admissible value (>0)")
+    rows = int(input("Enter the number of rows for your matrices: "))
+    columns = int(input("Enter the number of columns for your matrices: "))
 # First, the user specifies the size of the matrices by inserting the number of rows and columns.
+# The while loop ensures that the user enters an admissible (>0) number before proceeding. 
 
 matrix1 = []
 for row in range(rows):
@@ -61,6 +66,8 @@ def addMatrices(matrix_a, matrix_b):
 # We index the results matrix using row to specify which matrices we are adding, then we add to it the sum of all elements at this index in all matrices. 
 
 print("The result of added matrices is:\n", addMatrices(matrix1, matrix2))
+
+
 
 
       
