@@ -1,7 +1,7 @@
 print("Assignment 3")
 
 user_name = input("Enter your name here: ")
-    
+
 def displayMenu():
     print(
         "This is the menu: \n" + "\t1. Add Matrices\n" + 
@@ -28,7 +28,7 @@ for row in range(rows):
         print("Enter element", column, "of matrix", row, "in main matrix 1")
         numbers = int(input())
         matrix1[row].append(numbers)
-        
+
 # matrix1 is the first matrix the user will input. 
 # First, empty lists will be added to matrix1 based on the number of rows. 
 # Since the columns decide the length of the sub matrices, the user will be asked to enter the matrices' elements row*columns times, hence the nested for loop. 
@@ -68,10 +68,48 @@ def addMatrices(matrix_a, matrix_b):
 print("The result of added matrices is:\n", addMatrices(matrix1, matrix2))
 
 
+#### IF USER CHOOSES  2
+rows2 = int(input("Enter the number of rows for your first matrix: "))
+columns2 = int(input("Enter the number of columns for your first matrix: "))
+while rows2 <= 0 or columns2 <= 0:
+    print("Please enter an admissible value (>0)")
+    rows2 = int(input("Enter the number of rows for your first matrix: "))
+    columns2 = int(input("Enter the number of columns for your first matrix: "))
+
+rows3 = int(input("Enter the number of rows for your second matrix: "))
+columns3 = int(input("Enter the number of columns for your second matrix: "))    
+while rows3 <= 0 or columns3 <= 0:
+    print("Please enter an admissible value (>0)")
+    rows3 = int(input("Enter the number of rows for your second matrix: "))
+    columns3 = int(input("Enter the number of columns for your second matrix: "))
+
+if rows2 != columns3 or columns2 != rows3:
+    print("The matrices are not a rotation of each other")
+else:  
+
+    matrix3 = []
+    for r in range(rows2):
+        matrix3.append([])
+        for col in range(columns2): 
+            print("Enter element", col, "of matrix", r, "in main matrix 1")
+            num = int(input())
+            matrix3[r].append(num)
+    
+    print()        
+    print("Your first matrix is:\n", matrix3)
+    print()
+    
+    
+    matrix4 = [] 
+    for row in range(rows3):
+        matrix4.append([])
+        for column in range(columns3): 
+            print("Enter element", column, "of matrix", row, "in main matrix 2")
+            number = int(input())
+            matrix4[row].append(number)
+    print()        
+    print("Your second matrix is:\n", matrix4)
+    print()
 
 
-      
 
-  
-        
-        
