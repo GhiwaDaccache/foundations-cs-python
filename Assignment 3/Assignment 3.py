@@ -63,15 +63,13 @@ def addMatrices():
             matrix[row].append(matrix1[row][column] + matrix2[row][column])
     return matrix
 
-    print("The result of the added matrices is:\n", matrix)
-
 # We start by creating the matrix that will store the results. 
 # Then, for the same number of rows as both matrix1 and matrix2 we add empty lists. 
 # We index the results matrix using row to specify which matrices we are adding, then we add to it the sum of all elements at this index in all matrices. 
-    
 
+    print("The result of the added matrices is:\n", matrix)
     
-
+    
 #### IF USER CHOOSES  2
 def checkRotation():
     rows = int(input("Enter the number of rows for your first matrix: "))
@@ -80,6 +78,9 @@ def checkRotation():
         print("Please enter an admissible value (>0)")
         rows = int(input("Enter the number of rows for your first matrix: "))
         columns = int(input("Enter the number of columns for your first matrix: "))
+
+# First, the user specifies the size of the first matrix by inserting the number of rows and columns.
+# The while loop ensures that the user enters an admissible (>0) number before proceeding. 
     
     rows2 = int(input("Enter the number of rows for your second matrix: "))
     columns2 = int(input("Enter the number of columns for your second matrix: "))    
@@ -87,11 +88,16 @@ def checkRotation():
         print("Please enter an admissible value (>0)")
         rows2 = int(input("Enter the number of rows for your second matrix: "))
         columns2 = int(input("Enter the number of columns for your second matrix: "))
-    
+
+# Here the user inputs the dimensions of the second matrix. 
+
     if rows != columns2 or columns != rows2:
         print("The matrices are not a rotation of each other")
-    else:  
+        
+# Before moving on, the program checks if the number of rows in matrix 1 matches the number of columns in matrix 2, and that number of rows in matrix 2 matches the number of columns in matrix 1.
+# Because if they aren't, it is impossible that they are a rotation of each other. 
     
+    else:  
         matrix1 = []
         for row in range(rows):
             matrix1.append([])
@@ -99,7 +105,12 @@ def checkRotation():
                 print("Enter element", column, "of matrix", row, "in main matrix 1")
                 numbers = int(input())
                 matrix1[row].append(numbers)
-        
+                
+# matrix1 is the first matrix the user will input. 
+# First, empty lists will be added to matrix1 based on the number of rows. 
+# Since the columns decide the length of the sub matrices, the user will be asked to enter the matrices' elements row*columns times, hence the nested for loop. 
+# Finally, the inputs will be added to the matrix, according to their respective row.
+
         print()        
         print("Your first matrix is:\n", matrix1)
         print()
@@ -112,7 +123,8 @@ def checkRotation():
                 print("Enter element", column, "of matrix", row, "in main matrix 2")
                 numbers2 = int(input())
                 matrix2[row].append(numbers2)
-                
+# The same procedure as matrix 1, is applied for matrix2.
+      
         print()        
         print("Your second matrix is:\n", matrix2)
         print()
@@ -122,11 +134,17 @@ def checkRotation():
             rotated_matrix.append([])
             for row in range(rows):
                 rotated_matrix[column].append(matrix1[row][column])
+                
+# An empty list is created to rotate matrix1.
+# Now the number of rows becomes the number of columns, for the values of column, empty lists are created and added to the new matrix we created.
+# Since the rows now decide the length of the sub matrices, for each row, the element at index[row][column] in matrix1 will be added to the new matrix at index[column(first loop)][row(second loop)].
+  
         if rotated_matrix == matrix2:
             print("The matrices are a rotation of each other")
         else:
             print("The matrices are not a rotation of each other")
-            
+
+# Finally we check if the rotated version of matrix1 matches matrix2.
 
 #### IF USER CHOOSES 3
 
