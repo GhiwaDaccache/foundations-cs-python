@@ -1,10 +1,11 @@
 print("Assignment 3")
 user_name = input("Enter your name here: ")
+print()
 
 def displayMenu():
 # displayMenu function here, prints out all the options the user can choose from.
     print(
-        "This is the menu: \n" + "\t1. Add Matrices\n" + 
+        "This is the menu, please make a selection: \n" + "\t1. Add Matrices\n" + 
           "\t2. Check Rotation\n" + "\t3. Invert Directory\n" + 
           "\t4. Convert Matrix to Dictionary\n" + 
           "\t5. Check Palindrome\n" + 
@@ -196,17 +197,6 @@ def convertMatrix():
 
 
 #### IF USER CHOOSES 5
-
-# parameter to a RECURSIVE FUNCTION. The function returns true if the string is a
-# palindrome, and false otherwise. A palindrome is a word that is the same when written in
-# reverse.
-# EX:
-# “hello”  “olleh”, it is not a palindrome since reverse is NOT equal to the forward word.
-# “racecar”  “racecar”, it is a palindrome since the reverse is equal to the forward word.
-
-
-
-
 def checkPalindrome():
     string = input("Please enter your sentence: ")
     def verifyElements(s):
@@ -219,9 +209,71 @@ def checkPalindrome():
     print(verifyElements(string))
 
  
+#### IF USER CHOOSES 6
+def SearchAndSort():
+# the program prompts the user for the element to look for in a list.
+# If the element is found the program must display the index at which this element was found
+# and it must sort the list using a sort function that you created (do not use .sort() or
+# sorted()). If the element is not in the list, a message should be displayed indicating this.
+    pass
         
 
+# def main2():
+#   
+#   # displayMenu()
+#   choice = 0  # Random value just to enter the while loop (not 5 in this case)
+#   limit = 0  # We will use this limit to count invalid inputs
+#   while choice != 5 and limit < 5:
+#     # While user does not want to exit, execute the code below
+#     displayMenu()
+#     choice = eval(input("\nEnter your choice: "))
+#     if choice == 1:
+#       cookChicken()
+#       print("Waiter gets chicken\n")
+#     elif choice == 2:
+#       cookSteak()
+#       print("Waiter gets steak\n")
+#     elif choice == 3:
+#       prepareSalad()
+#       print("Waiter gets salad\n")
+#     elif choice == 4:
+#       cookSoup()
+#       print("Waiter gets soup\n")
+#     elif choice != 5:
+#       # Enter here if the choice is not 1,2,3,4 or 5
+#       print("Invalid Input\n")
+#       # We increment limit here to indicate wrong input
+#       limit += 1
+#       print("Your have reached", limit, "/ 5 trys\n")
+# ​
+#   print("\nYou left the restaurant...Bye.")
 
+
+
+def main():
+    displayMenu()
+    selection = int(input())
+    while selection != 7 :
+        if selection == 1 :
+            addMatrices()
+        elif selection == 2 :
+            checkRotation()
+        elif selection == 3 :
+            invertDictionary()
+        elif selection == 4 :
+            convertMatrix()
+        elif selection == 5 :
+            checkPalindrome()
+        elif selection == 6 :
+            SearchAndSort()
+        else:
+            print("Please choose a number from the list")
+        print()
+        displayMenu()
+        selection = int(input())
+    print("You exited")
+     
+main()
 
 
 
