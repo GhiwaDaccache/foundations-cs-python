@@ -170,23 +170,26 @@ def invertDictionary():
 
 
 #### IF USER CHOOSES 4
-#[First Name, Last Name, ID, Job Title, Company]
 def convertMatrix():
     classroom =[]
     students_number = int(input("Please enter the number of students: "))
     for i in range(students_number):
+        print()
         print("student", i)
         first_name = input("Please enter the student's first name: ")
         last_name = input("Please enter the student's last name: ")
         stud_id = i
         job = input("Please enter the student's job title: ")
         company = input("Please enter the student's company name: ")
-        print()
         classroom.append([first_name, last_name, stud_id, job, company])
         
     print(classroom)
 
-convertMatrix()
+    students_class = {}
+    for i in range(students_number):
+        students_class[i] = [classroom[i][0], classroom[i][1], classroom[i][3], classroom[i][4]]
+    print(students_class)       
+
         
         
         
