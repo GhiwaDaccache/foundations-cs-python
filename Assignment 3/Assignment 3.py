@@ -183,14 +183,21 @@ def convertMatrix():
         company = input("Please enter the student's company name: ")
         classroom.append([first_name, last_name, stud_id, job, company])
         
-    print(classroom)
+# The user inputs the number of students, then this number will then be used to know how many times to ask for user data.
+# The student ID will be automatically generated to ensure no duplicate entries. 
+# Then all of the inputs will be added to a list inside of an empty list, creating a matrix. 
 
     students_class = {}
     for i in range(students_number):
         students_class[i] = [classroom[i][0], classroom[i][1], classroom[i][3], classroom[i][4]]
-    print(students_class)       
-
         
+# For each index in classroom, we add to the dictionary by specifying the key as this index (since it also doubles as the ID).
+# The values are then indexed from the list, leaving out index [i][2], for it's the student ID.
+    print()
+    print("The students list is the following:\n", students_class)       
+
+
+#### IF USER CHOOSES 4
         
         
         
