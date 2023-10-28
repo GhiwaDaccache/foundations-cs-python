@@ -13,6 +13,7 @@ def displayMenu():
     
 # displayMenu function here, prints out all the options the user can choose from.
 
+#### IF USER CHOOSES  1
 def addMatrices(): 
     rows = int(input("Enter the number of rows for your matrices: "))
     columns = int(input("Enter the number of columns for your matrices: "))
@@ -147,22 +148,6 @@ def checkRotation():
 
 
 #### IF USER CHOOSES 3
-#EX:
-#Before inverting:
-#{“1”:”x”, “2”:”y”, “3”:”x”, “4”:”m”}
-#After inverting:
-#{“x”:[“1”, “3”], “y”:”3”, “m”:”4”}
-
-
-# for i in range (students_number):
-#   name = input("Student full name: ")
-#   age = int(input("Student age: "))
-#   height = int(input("Student height in cm: "))   
-#   students_list.append([name, age, height])
-#   classroom[i] = students_list[i]
-#   print(classroom)
-
-
 def invertDictionary():
     
     dictionary = {}
@@ -172,17 +157,20 @@ def invertDictionary():
         value = input("Enter your value: ")
         dictionary[key] = value  
     print(dictionary)
-
+# The number of items helps define how many times the user will input keys and values. 
+# Then an ordinary dictionary is created using keys and values. 
     
     inverted_dictionary = {}
-    
+# A new dictionary is created to hold the inverted values and keys. 
+# So far, the program will erase duplicates and replace the key with th newest one. 
+# if inverted_dictionary[value]=inverted_dictionary[value-1]:  
     for key, value in dictionary.items():
         inverted_dictionary[value] = key
     print(inverted_dictionary)
-    
 
-invertDictionary()
-    
+
+#### IF USER CHOOSES 4
+
     
 
 
