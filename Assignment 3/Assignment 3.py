@@ -1,8 +1,8 @@
 print("Assignment 3")
-
 user_name = input("Enter your name here: ")
 
 def displayMenu():
+# displayMenu function here, prints out all the options the user can choose from.
     print(
         "This is the menu: \n" + "\t1. Add Matrices\n" + 
           "\t2. Check Rotation\n" + "\t3. Invert Directory\n" + 
@@ -10,8 +10,6 @@ def displayMenu():
           "\t5. Check Palindrome\n" + 
           "\t6. Search for an Element & Merge Sort\n" + "\t7. Exit\n"
               )
-    
-# displayMenu function here, prints out all the options the user can choose from.
 
 #### IF USER CHOOSES  1
 def addMatrices(): 
@@ -197,9 +195,30 @@ def convertMatrix():
     print("The students list is the following:\n", students_class)       
 
 
-#### IF USER CHOOSES 4
-        
-        
+#### IF USER CHOOSES 5
+
+# parameter to a RECURSIVE FUNCTION. The function returns true if the string is a
+# palindrome, and false otherwise. A palindrome is a word that is the same when written in
+# reverse.
+# EX:
+# “hello”  “olleh”, it is not a palindrome since reverse is NOT equal to the forward word.
+# “racecar”  “racecar”, it is a palindrome since the reverse is equal to the forward word.
+
+
+
+
+def checkPalindrome():
+    string = input("Please enter your sentence: ")
+    def verifyElements(s):
+        reverse = ""
+        for i in range(len(s) - 1, -1, -1):
+            reverse += s[i]
+        if string == reverse :
+            return True 
+        return False
+    print(verifyElements(string))
+
+ 
         
 
 
