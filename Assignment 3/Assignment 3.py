@@ -61,7 +61,6 @@ def addMatrices():
         matrix.append([])
         for column in range(columns):
             matrix[row].append(matrix1[row][column] + matrix2[row][column])
-    return matrix
 
 # We start by creating the matrix that will store the results. 
 # Then, for the same number of rows as both matrix1 and matrix2 we add empty lists. 
@@ -141,12 +140,69 @@ def checkRotation():
   
         if rotated_matrix == matrix2:
             print("The matrices are a rotation of each other")
+# Finally we check if the rotated version of matrix1 matches matrix2.
+
         else:
             print("The matrices are not a rotation of each other")
 
-# Finally we check if the rotated version of matrix1 matches matrix2.
 
 #### IF USER CHOOSES 3
+#EX:
+#Before inverting:
+#{“1”:”x”, “2”:”y”, “3”:”x”, “4”:”m”}
+#After inverting:
+#{“x”:[“1”, “3”], “y”:”3”, “m”:”4”}
+
+
+# for i in range (students_number):
+#   name = input("Student full name: ")
+#   age = int(input("Student age: "))
+#   height = int(input("Student height in cm: "))   
+#   students_list.append([name, age, height])
+#   classroom[i] = students_list[i]
+#   print(classroom)
+
+
+def invertDictionary():
+    
+    dictionary = {}
+    items = int(input("Enter the number of items: "))
+    for i in range(items):
+        key = input("Enter you key: ")
+        value = input("Enter your value: ")
+        dictionary[key] = value  
+    print(dictionary)
+
+    
+    inverted_dictionary = {}
+    
+    for key, value in dictionary.items():
+        inverted_dictionary[value] = key
+    print(inverted_dictionary)
+    
+
+invertDictionary()
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
 
