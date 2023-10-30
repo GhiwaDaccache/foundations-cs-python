@@ -224,7 +224,15 @@ def SearchAndSort():
         list.append(elements)
     element = input("Please enter the element to search for: ")
     
-
+    for x in range(len(list) - 1):
+        for y in range(x + 1, len(list)) :
+            if list[x] > list[y]:
+              temp = list[x]
+              list[x] = list[y]
+              list[y] = temp
+        return list  
+    
+    
 SearchAndSort()         
     
 
