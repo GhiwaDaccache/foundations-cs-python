@@ -221,8 +221,29 @@ def searchAndSort():
         elements = input()
         list.append(elements)
     element = input("Please enter the element to search for: ")
+#  User is prompted to enter the list and the item to search for.
+ 
     
+    def searchList(l, e):
+        for i in range(len(l)):
+            if l[i] == e:
+                return i
+        return -1
+    result = searchList(element, list)
+
+
+    if result == -1:
+        print("The element is not in the list")
+    else:
+        print("The element is at index:", result)  
+        
   
+# We loop through all the elements of the list and compare them to our given element. 
+# If they match, we return its index. 
+# If not, the program returns -1. 
+# This process keeps repeating until finding the element or after having looped through the whole list. 
+    
+    
     def sortList(l):
         for x in range(len(l) - 1):
             for y in range(x + 1, len(l)) :
@@ -231,24 +252,13 @@ def searchAndSort():
                   l[x] = l[y]
                   l[y] = temp
         return l
-    sorted_list = sortList(list)
-    
-    def searchList(l, e):
-        low = 0
-        high = len(l) - 1
-        while low <= high:
-          
-          middle = (low + high) // 2
-          if e == l[middle]:
-            return middle
-          elif e > l[middle]:
-            low = middle + 1
-          else:
-            high = middle - 1
-        return -1
-    
-    print("The element is at index:", searchList(sorted_list, element))
-    
+# First we loop through all elements, then outside of this element we look for one that's lower. 
+# Once we find the lower element, we swap it with our original element using temp. 
+
+    print("The sorted list: ", sortList(list))
+
+
+
 
 def main():
     displayMenu()
