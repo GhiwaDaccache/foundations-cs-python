@@ -214,11 +214,19 @@ def checkPalindrome():
  
 #### IF USER CHOOSES 6
 def SearchAndSort():
-# the program prompts the user for the element to look for in a list.
 # If the element is found the program must display the index at which this element was found
 # and it must sort the list using a sort function that you created (do not use .sort() or
 # sorted()). If the element is not in the list, a message should be displayed indicating this.
-    pass
+    num = int(input("Please enter the number of elements in your list: "))
+    list = []
+    for i in range(num) :
+        elements = input()
+        list.append(elements)
+    element = input("Please enter the element to search for: ")
+    
+
+SearchAndSort()         
+    
 
 
 def main():
@@ -244,7 +252,7 @@ def main():
         selection = int(input())
     print("You exited")
      
-main()
+
 
 
 
