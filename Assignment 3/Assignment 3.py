@@ -203,6 +203,9 @@ def checkPalindrome():
         reverse = ""
         for i in range(len(s) - 1, -1, -1):
             reverse += s[i]
+# The starting index will be length of the string -1, so we start at the last index. Then the stopping index is -1 because it is excluded.
+# We then start adding each character going backwards (step = -1) to an empty string. And we compare to the original one. 
+
         if string == reverse :
             return True 
         return False
@@ -216,38 +219,6 @@ def SearchAndSort():
 # and it must sort the list using a sort function that you created (do not use .sort() or
 # sorted()). If the element is not in the list, a message should be displayed indicating this.
     pass
-        
-
-# def main2():
-#   
-#   # displayMenu()
-#   choice = 0  # Random value just to enter the while loop (not 5 in this case)
-#   limit = 0  # We will use this limit to count invalid inputs
-#   while choice != 5 and limit < 5:
-#     # While user does not want to exit, execute the code below
-#     displayMenu()
-#     choice = eval(input("\nEnter your choice: "))
-#     if choice == 1:
-#       cookChicken()
-#       print("Waiter gets chicken\n")
-#     elif choice == 2:
-#       cookSteak()
-#       print("Waiter gets steak\n")
-#     elif choice == 3:
-#       prepareSalad()
-#       print("Waiter gets salad\n")
-#     elif choice == 4:
-#       cookSoup()
-#       print("Waiter gets soup\n")
-#     elif choice != 5:
-#       # Enter here if the choice is not 1,2,3,4 or 5
-#       print("Invalid Input\n")
-#       # We increment limit here to indicate wrong input
-#       limit += 1
-#       print("Your have reached", limit, "/ 5 trys\n")
-# ​
-#   print("\nYou left the restaurant...Bye.")
-
 
 
 def main():
