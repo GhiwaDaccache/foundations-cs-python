@@ -213,29 +213,42 @@ def checkPalindrome():
 
  
 #### IF USER CHOOSES 6
-def SearchAndSort():
-# If the element is found the program must display the index at which this element was found
-# and it must sort the list using a sort function that you created (do not use .sort() or
-# sorted()). If the element is not in the list, a message should be displayed indicating this.
-    num = int(input("Please enter the number of elements in your list: "))
+def searchAndSort():
+
     list = []
+    num = int(input("Please enter the number of elements in your list: "))
     for i in range(num) :
         elements = input()
         list.append(elements)
     element = input("Please enter the element to search for: ")
     
-    for x in range(len(list) - 1):
-        for y in range(x + 1, len(list)) :
-            if list[x] > list[y]:
-              temp = list[x]
-              list[x] = list[y]
-              list[y] = temp
-        return list  
+  
+    def sortList(l):
+        for x in range(len(l) - 1):
+            for y in range(x + 1, len(l)) :
+                if l[x] > l[y]:
+                  temp = l[x]
+                  l[x] = l[y]
+                  l[y] = temp
+        return l
+    sorted_list = sortList(list)
     
+    def searchList(l, e):
+        low = 0
+        high = len(l) - 1
+        while low <= high:
+          
+          middle = (low + high) // 2
+          if e == l[middle]:
+            return middle
+          elif e > l[middle]:
+            low = middle + 1
+          else:
+            high = middle - 1
+        return -1
     
-SearchAndSort()         
+    print("The element is at index:", searchList(sorted_list, element))
     
-
 
 def main():
     displayMenu()
@@ -252,7 +265,7 @@ def main():
         elif selection == 5 :
             checkPalindrome()
         elif selection == 6 :
-            SearchAndSort()
+            searchAndSort()
         else:
             print("Please choose a number from the list")
         print()
@@ -260,7 +273,8 @@ def main():
         selection = int(input())
     print("You exited")
      
-
+    
+main()
 
 
 
