@@ -166,7 +166,7 @@ def invertDictionary():
     for key, value in dictionary.items():
         inverted_dictionary[value] = key
     print(inverted_dictionary)
-
+    
 
 #### IF USER CHOOSES 4
 def convertMatrix():
