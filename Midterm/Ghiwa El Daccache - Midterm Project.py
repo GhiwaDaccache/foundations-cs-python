@@ -6,6 +6,7 @@ print()
 open_tabs = []
 
 def displayMenu():
+# displayMenu function here, prints out all the options the user can choose from.
     print(
           "This is the menu. Please make a selection from the following: \n" +
           "\t1. Open Tab\n" + 
@@ -25,7 +26,12 @@ def openTab():
     print("New tab opened for:", title)
                     
 def closeTab():
+    print()
     close_index = int(input("Please enter the index of the tab you wish to close: "))
+    while close_index < 0 :
+        print("Ivalid index. Please input a valid number (>=0)")
+        close_index = int(input("Please enter the index of the tab you wish to close: "))
+
 # https://www.geeksforgeeks.org/python-del-to-delete-objects/
 # I used the del function which I read about in the article referenced above from geeksforgeeks.com
 # del my_list1[i], in this format del deletes an item at a specific index i.
@@ -33,7 +39,11 @@ def closeTab():
     
 
 def switchTab():
+    print()
     display_index = int(input("Please enter the index of the tab you wish to switch to: "))
+    while display_index < 0 :
+        print("Ivalid index. Please input a valid number (>=0)")
+        display_index = int(input("Please enter the index of the tab you wish to switch to: "))
     from urllib.request import urlopen
     url = open_tabs[display_index]["URL"]
     page = urlopen(url)
