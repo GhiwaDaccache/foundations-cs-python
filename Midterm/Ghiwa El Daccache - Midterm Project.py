@@ -19,23 +19,26 @@ def displayMenu():
 def openTab():
     print()
     print("New tab")
+# The user is prompted to enter the title and url of the website they wish to open.
     title = input("Please enter the title of the website: ")
     web_url = input("Please enter the URL of the website: ")
+# Then a dictionary called tab, will represent each opened tab.
     tab = {"Title": title, "URL": web_url}
+# Once the tab is opened (dictionary created), it is added to a list called open tabs, to keep track of all the opened tabs and their order.
     open_tabs.append(tab)
     print("New tab opened for:", title)
                     
 def closeTab():
     print()
-# First the admin is prompted to enter the index of the tab they wish to close.
+# First the user is prompted to enter the index of the tab they wish to close.
     close_index = input("Please enter the index of the tab you wish to close: ")
 
-# This if statement handles the case where the admin doesn't enter an index, it gives it a value of -1 to use later on.
-# If the admin doesn't return an empty input, the program enters the while loop. 
+# This if statement handles the case where the user doesn't enter an index, it gives it a value of -1 to use later on.
+# If the user doesn't return an empty input, the program enters the while loop. 
     if close_index == "":
         close_index = -1
         
-# The while loop here, ensures that the admin input is valid by checking if:
+# The while loop here, ensures that the user input is valid by checking if:
     # The input is a number
     # The input is a number <-1
     # The input is a number < number of open tabs (or len(open_tabs) -1)
@@ -57,15 +60,15 @@ def closeTab():
 
 def switchTab():
     print()
-# First the admin is prompted to enter the index of the tab they wish to display.
+# First the user is prompted to enter the index of the tab they wish to display.
     display_index = input("Please enter the index of the tab you wish to switch to: ")
 
-# This if statement handles the case where the admin doesn't enter an index, it gives it a value of -1 to use later on.
-# If the admin doesn't return an empty input, the program enters the while loop.  
+# This if statement handles the case where the user doesn't enter an index, it gives it a value of -1 to use later on.
+# If the user doesn't return an empty input, the program enters the while loop.  
     if display_index == "":
         display_index = -1
         
-# The while loop here, ensures that the admin input is valid by checking if:
+# The while loop here, ensures that the user input is valid by checking if:
     # The input is a number
     # The input is a number <-1
     # The input is a number < number of open tabs (or len(open_tabs) -1)
@@ -81,11 +84,20 @@ def switchTab():
         url = open_tabs[len(open_tabs) -1]["URL"] 
     else: 
         url = open_tabs[display_index]["URL"]
-    
+
+# The below block is to print the HTML content of the URL. 
+# Reference: https://realpython.com/python-web-scraping-practical-introduction/
+# First, we import a package for web scraping from Python standard library, including the urlopen() we will use.
+# 
+  
     page = urlopen(url)
     html_bytes = page.read()
     html = html_bytes.decode("utf-8")
     print(html)
+
+
+
+
 
 openTab()
 openTab()
