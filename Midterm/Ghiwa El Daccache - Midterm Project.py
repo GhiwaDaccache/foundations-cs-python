@@ -58,16 +58,13 @@ def switchTab():
   print()
   display_index = input("Please enter the index of the tab you wish to switch to: ")
   if display_index == "":
-    display_index == -1
+    display_index = -1
   else:
     display_index = int(display_index)
-    while display_index < 0 :
-        print("Ivalid index. Please input a valid number (>=0)")
-        display_index = int(input("Please enter the index of the tab you wish to switch to: "))
-    if display_index is None: 
-       url = open_tabs[len(open_tabs) -1]["URL"] 
-    else: 
-          url = open_tabs[display_index]["URL"]
+  if display_index == -1: 
+    url = open_tabs[len(open_tabs) -1]["URL"] 
+  else: 
+    url = open_tabs[display_index]["URL"]
 
   page = urlopen(url)
   html_bytes = page.read()
