@@ -36,40 +36,26 @@ def closeTab():
 # I used the del function which I read about in the article referenced above from geeksforgeeks.com
 # del my_list1[i], in this format del deletes an item at a specific index i.
     del open_tabs[close_index]
-    
-
-# def switchTab():
-#     print()
-#     display_index = int(input("Please enter the index of the tab you wish to switch to: "))
-#     while display_index < 0 :
-#         print("Ivalid index. Please input a valid number (>=0)")
-#         display_index = int(input("Please enter the index of the tab you wish to switch to: "))
-#     if display_index is None: 
-#        url = open_tabs[len(open_tabs) -1]["URL"] 
-#     else: 
-#         url = open_tabs[display_index]["URL"]
-    
-#     page = urlopen(url)
-#     html_bytes = page.read()
-#     html = html_bytes.decode("utf-8")
-#     print(html)
 
 def switchTab():
-  print()
-  display_index = input("Please enter the index of the tab you wish to switch to: ")
-  if display_index == "":
-    display_index = -1
-  else:
+    print()
+    display_index = input("Please enter the index of the tab you wish to switch to: ")
+# First the admin is prompted to enter the index of the tab they wish to display.
+    while display_index.isdigit() == False or int(display_index) < -1 or int(display_index) > len(open_tabs) -1: 
+       print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
+       display_index = input("Please enter the index of the tab you wish to switch to: ")
+    
     display_index = int(display_index)
-  if display_index == -1: 
-    url = open_tabs[len(open_tabs) -1]["URL"] 
-  else: 
-    url = open_tabs[display_index]["URL"]
-
-  page = urlopen(url)
-  html_bytes = page.read()
-  html = html_bytes.decode("utf-8")
-  print(html)
+     
+    if display_index == -1: 
+        url = open_tabs[len(open_tabs) -1]["URL"] 
+    else: 
+        url = open_tabs[display_index]["URL"]
+    
+    page = urlopen(url)
+    html_bytes = page.read()
+    html = html_bytes.decode("utf-8")
+    print(html)
 
 openTab()
 openTab()
