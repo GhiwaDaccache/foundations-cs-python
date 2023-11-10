@@ -41,10 +41,16 @@ def switchTab():
     print()
     display_index = input("Please enter the index of the tab you wish to switch to: ")
 # First the admin is prompted to enter the index of the tab they wish to display.
-    while display_index.isdigit() == False or int(display_index) < -1 or int(display_index) > len(open_tabs) -1: 
-       print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
-       display_index = input("Please enter the index of the tab you wish to switch to: ")
-    
+    if display_index == "":
+        display_index = -1
+    else:           
+        while display_index.isdigit() == False or int(display_index) < -1 or int(display_index) > len(open_tabs) -1: 
+           print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
+           display_index = input("Please enter the index of the tab you wish to switch to: ")
+# This while loop ensure that the user input is valid by checking if:
+    # The input is a number
+    # The input is a number >=0
+    #
     display_index = int(display_index)
      
     if display_index == -1: 
