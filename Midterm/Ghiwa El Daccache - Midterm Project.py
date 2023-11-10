@@ -27,32 +27,56 @@ def openTab():
                     
 def closeTab():
     print()
-    close_index = int(input("Please enter the index of the tab you wish to close: "))
-    while close_index < 0 :
-        print("Ivalid index. Please input a valid number (>=0)")
-        close_index = int(input("Please enter the index of the tab you wish to close: "))
+# First the admin is prompted to enter the index of the tab they wish to close.
+    close_index = input("Please enter the index of the tab you wish to close: ")
+
+# This if statement handles the case where the admin doesn't enter an index, it gives it a value of -1 to use later on.
+# If the admin doesn't return an empty input, the program enters the while loop. 
+    if close_index == "":
+        close_index = -1
+        
+# The while loop here, ensures that the admin input is valid by checking if:
+    # The input is a number
+    # The input is a number <-1
+    # The input is a number < number of open tabs (or len(open_tabs) -1)
+# Once the input is valid, the loop is exited and casts the input as an integer.
+    else:           
+        while close_index.isdigit() == False or int(close_index) < -1 or int(close_index) > len(open_tabs) -1: 
+           print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
+           close_index = input("Please enter the index of the tab you wish to close: ")
+        close_index = int(close_index)
 
 # https://www.geeksforgeeks.org/python-del-to-delete-objects/
 # I used the del function which I read about in the article referenced above from geeksforgeeks.com
 # del my_list1[i], in this format del deletes an item at a specific index i.
-    del open_tabs[close_index]
+# The if statement below, checks if the input is -1, means the user did not enter any value, so it closes the last tab opened, otherwise it closes the specified one.
+    if close_index == -1:
+        del open_tabs[len(open_tabs) - 1]
+    else:
+        del open_tabs[close_index]
 
 def switchTab():
     print()
-    display_index = input("Please enter the index of the tab you wish to switch to: ")
 # First the admin is prompted to enter the index of the tab they wish to display.
+    display_index = input("Please enter the index of the tab you wish to switch to: ")
+
+# This if statement handles the case where the admin doesn't enter an index, it gives it a value of -1 to use later on.
+# If the admin doesn't return an empty input, the program enters the while loop.  
     if display_index == "":
         display_index = -1
+        
+# The while loop here, ensures that the admin input is valid by checking if:
+    # The input is a number
+    # The input is a number <-1
+    # The input is a number < number of open tabs (or len(open_tabs) -1)
+# Once the input is valid, the loop is exited and casts the input as an integer.
     else:           
-        while display_index.isdigit() == False or int(display_index) < -1 or int(display_index) > len(open_tabs) -1: 
+        while display_index.isdigit() == False or int(display_index) < -1 or int(display_index) > len(open_tabs): 
            print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
            display_index = input("Please enter the index of the tab you wish to switch to: ")
-# This while loop ensure that the user input is valid by checking if:
-    # The input is a number
-    # The input is a number >=0
-    #
-    display_index = int(display_index)
-     
+        display_index = int(display_index)
+
+# The if statement below, checks if the input is -1, means the user did not enter any value, so it switches to the last tab opened, otherwise it switches to the specified one.     
     if display_index == -1: 
         url = open_tabs[len(open_tabs) -1]["URL"] 
     else: 
