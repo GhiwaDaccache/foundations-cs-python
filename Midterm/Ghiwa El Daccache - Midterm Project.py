@@ -35,23 +35,23 @@ def closeTab():
 def switchTab():
     display_index = int(input("Please enter the index of the tab you wish to switch to: "))
     from urllib.request import urlopen
-    url = open_tabs[display_index][1]
+    url = open_tabs[display_index]["URL"]
     page = urlopen(url)
     html_bytes = page.read()
     html = html_bytes.decode("utf-8")
     print(html)
 
-openTab()
-openTab()
-openTab()
-print()
-print(open_tabs)
-print()
-closeTab()
-print()
-print(open_tabs)
-print()
-switchTab()
+# openTab()
+# openTab()
+# openTab()
+# print()
+# print(open_tabs)
+# print()
+# closeTab()
+# print()
+# print(open_tabs)
+# print()
+# switchTab()
             
 
 def main():
