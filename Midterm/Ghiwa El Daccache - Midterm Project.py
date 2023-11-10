@@ -19,23 +19,40 @@ def openTab():
     print()
     print("New tab")
     title = input("Please enter the title of the website: ")
-    url = input("Please enter the URL of the website: ")
-    tab = {"Title": title, "URL": url}
+    web_url = input("Please enter the URL of the website: ")
+    tab = {"Title": title, "URL": web_url}
     open_tabs.append(tab)
     print("New tab opened for:", title)
-
-# If the admin chooses (2), the system should permit the user to input the index of the
-# tab they wish to close. If no index is provided, the system will close the last opened
-# tab.
                     
 def closeTab():
-    tab_index = int(input("Please enter the index of the tab you wish to close: "))
-    open_tabs[0: tab_index]
+    close_index = int(input("Please enter the index of the tab you wish to close: "))
+# https://www.geeksforgeeks.org/python-del-to-delete-objects/
+# I used the del function which I read about in the article referenced above from geeksforgeeks.com
+# del my_list1[i], in this format del deletes an item at a specific index i.
+    del open_tabs[close_index]
     
-    del open_tabs[tab_index]
-        
 
-  
+def switchTab():
+    display_index = int(input("Please enter the index of the tab you wish to switch to: "))
+    from urllib.request import urlopen
+    url = open_tabs[display_index][1]
+    page = urlopen(url)
+    html_bytes = page.read()
+    html = html_bytes.decode("utf-8")
+    print(html)
+
+openTab()
+openTab()
+openTab()
+print()
+print(open_tabs)
+print()
+closeTab()
+print()
+print(open_tabs)
+print()
+switchTab()
+            
 
 def main():
     print("Hello and welcome!")
