@@ -3,6 +3,7 @@ print("-----------------------------------")
 print()
 
 from urllib.request import urlopen
+tab = {}
 open_tabs = []
 
 def displayMenu():
@@ -22,7 +23,7 @@ def openTab():
 # The user is prompted to enter the title and url of the website they wish to open.
     title = input("Please enter the title of the website: ")
     web_url = input("Please enter the URL of the website: ")
-# Then a dictionary called tab, will represent each opened tab.
+# Then a dictionary called tab, will represent each opened tab, with th title as key, and url as value.
     tab = {"Title": title, "URL": web_url}
 # Once the tab is opened (dictionary created), it is added to a list called open tabs, to keep track of all the opened tabs and their order.
     open_tabs.append(tab)
@@ -88,16 +89,19 @@ def switchTab():
 # The below block is to print the HTML content of the URL. 
 # Reference: https://realpython.com/python-web-scraping-practical-introduction/
 # First, we import a package for web scraping from Python standard library, including the urlopen() we will use.
-# 
+# To open a page, we pass url as parameter to urlopen().
+# We use the .read() method on the opened page, saved in variable Page.
+# .read() returns a sequence of bytes. decoded using .decode() to decode the bytes to a string using UTF-8.
+# UTF-8 is the dominant encoding system for the World Wide Web.
   
     page = urlopen(url)
-    html_bytes = page.read()
-    html = html_bytes.decode("utf-8")
+    html = page.read().decode("utf-8")
     print(html)
 
-
-
-
+def displayTabs():
+    for key, value in tab.items():
+        print(key, "is an open tab.")
+ 
 
 openTab()
 openTab()
@@ -110,6 +114,7 @@ print()
 print(open_tabs)
 print()
 switchTab()
+print(displayTabs())
             
 
 def main():
