@@ -17,18 +17,38 @@ def displayMenu():
           "\t8. Import Tabs\n" + "\t9. Exit"
           )
         
-def openTab():
+def openTab(parent_index):
     print()
     print("New tab")
+
+# This if condition checks if the opened tab is a nested or a parent tab. 
+# When the user chooses 1, the function will be called with none passed as parameter.
+# When the user chooses 5, the user will be prompted to enter the index of the parent tab then it will be passed to the openTab() function. 
+    if parent_index == None:
+        title = input("Please enter the title of the website: ")
+        web_url = input("Please enter the URL of the website: ")
+        tab = {"Title": title, "URL": web_url}
+        open_tabs.append(tab)
+        print("New tab opened for:", title)
+        
+    else:
+        title = input("Please enter the title of the website: ")
+        web_url = input("Please enter the URL of the website: ")
 # The user is prompted to enter the title and url of the website they wish to open.
-    title = input("Please enter the title of the website: ")
-    web_url = input("Please enter the URL of the website: ")
 # Then a dictionary called tab, will represent each opened tab, with th title as key, and url as value.
-    tab = {"Title": title, "URL": web_url}
+        tab = {"Title": title, "URL": web_url, "parent tab": parent_index}
 # Once the tab is opened (dictionary created), it is added to a list called open tabs, to keep track of all the opened tabs and their order.
-    open_tabs.append(tab)
-    print("New tab opened for:", title)
-                    
+        open_tabs.append(tab)
+        print("New nested tab opened for:", title)
+
+def checkValidInput(index):
+    if index == "":
+        index = -1
+    else:
+        while index.isdigit() == False or int(index) < -1 or int(index) > len (open_tabs) -1:
+            print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
+            checkValidInput()
+            
 def closeTab():
     print()
 # First the user is prompted to enter the index of the tab they wish to close.
@@ -41,6 +61,8 @@ def closeTab():
         
 # The while loop here, ensures that the user input is valid by checking if:
     # The input is a number
+    # To check if the user input is a number, I used .isdigit(), https://www.w3schools.com/python/ref_string_isdigit.asp 
+    # This method returns True if all characters of a string are digits. Checking if it's a digit is important to first verify that it's a valid input and second to cast it later on.
     # The input is a number <-1
     # The input is a number < number of open tabs (or len(open_tabs) -1)
 # Once the input is valid, the loop is exited and casts the input as an integer.
@@ -99,9 +121,15 @@ def switchTab():
     print(html)
 
 def displayTabs():
+    print()
     for tab in open_tabs:
         print(tab["Title"], "is an open tab.")
+
     
+# the system should enable users to create nested tabs by
+# specifying the index of the parent tab where they want to insert additional tabs.
+# After entering the index, the system should prompt the user to input the titles and
+# contents for the new tabs.
 
 openTab()
 openTab()
@@ -115,7 +143,10 @@ print(open_tabs)
 print()
 switchTab()
 displayTabs()
-            
+openNestedTab()
+print(open_tabs)
+
+
 
 def main():
     print("Hello and welcome!")
