@@ -23,7 +23,7 @@ def openTab(parent_index):
 
 # This if condition checks if the opened tab is a nested or a parent tab. 
 # When the user chooses 1, the function will be called with none passed as parameter.
-# When the user chooses 5, the user will be prompted to enter the index of the parent tab then it will be passed to the openTab() function. 
+# When the user chooses 5, the user will be prompted to enter the index of the parent tab then it will be passed to the function. 
     if parent_index == None:
         title = input("Please enter the title of the website: ")
         web_url = input("Please enter the URL of the website: ")
@@ -34,21 +34,25 @@ def openTab(parent_index):
     else:
         title = input("Please enter the title of the website: ")
         web_url = input("Please enter the URL of the website: ")
-# The user is prompted to enter the title and url of the website they wish to open.
-# Then a dictionary called tab, will represent each opened tab, with th title as key, and url as value.
         tab = {"Title": title, "URL": web_url, "parent tab": parent_index}
+# The user is prompted to enter the title and url of the website they wish to open.
+# Then a dictionary called tab, will represent each opened tab, with the title as key, and url as value.
 # Once the tab is opened (dictionary created), it is added to a list called open tabs, to keep track of all the opened tabs and their order.
         open_tabs.append(tab)
         print("New nested tab opened for:", title)
 
-def checkValidInput(index):
-    if index == "":
-        index = -1
-    else:
-        while index.isdigit() == False or int(index) < -1 or int(index) > len (open_tabs) -1:
-            print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
-            checkValidInput()
+
+########################################################################################################
+# def checkValidInput(index):
+#     if index == "":
+#         index = -1
+#     else:
+#         while index.isdigit() == False or int(index) < -1 or int(index) > len (open_tabs) -1:
+#             print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
+#             checkValidInput()
+########################################################################################################
             
+
 def closeTab():
     print()
 # First the user is prompted to enter the index of the tab they wish to close.
@@ -131,24 +135,57 @@ def displayTabs():
 # After entering the index, the system should prompt the user to input the titles and
 # contents for the new tabs.
 
-openTab()
-openTab()
-openTab()
-print()
-print(open_tabs)
-print()
-closeTab()
-print()
-print(open_tabs)
-print()
-switchTab()
-displayTabs()
-openNestedTab()
-print(open_tabs)
-
+# openTab()
+# openTab()
+# openTab()
+# print()
+# print(open_tabs)
+# print()
+# closeTab()
+# print()
+# print(open_tabs)
+# print()
+# switchTab()
+# displayTabs()
+# print(open_tabs)
 
 
 def main():
     print("Hello and welcome!")
     displayMenu()
+    selection = int(input("Please choose an action from the menu, by entering its assigned number. "))
+    while selection != 9 :
+        
+        if selection == 1 :
+            openTab(None)
+            
+        elif selection == 2 :
+            closeTab()
+            
+        elif selection == 3 :
+            switchTab()
+            
+        elif selection == 4 :
+            displayTabs()
+            
+        elif selection == 5 :
+            parent_tab_index = int(input("Please enter the index of the parent tab: "))
+            openTab(parent_tab_index)
+            
+        elif selection == 6 :
+            clearTabs()
+            
+        elif selection == 7 :
+            saveTabs()
+        
+        elif selection == 8 :
+            importTabs()
+            
+        else:
+            print("Please choose a number from the list")
+        print()
+        displayMenu()
+        selection = int(input("Please choose an action from the menu, by entering its assigned number. "))
+    print("You exited")
+    
 
