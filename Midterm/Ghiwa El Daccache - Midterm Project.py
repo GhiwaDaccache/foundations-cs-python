@@ -99,9 +99,9 @@ def switchTab():
     print(html)
 
 def displayTabs():
-    for key, value in tab.items():
-        print(key, "is an open tab.")
- 
+    for tab in open_tabs:
+        print(tab["Title"], "is an open tab.")
+    
 
 openTab()
 openTab()
@@ -114,7 +114,7 @@ print()
 print(open_tabs)
 print()
 switchTab()
-print(displayTabs())
+displayTabs()
             
 
 def main():
