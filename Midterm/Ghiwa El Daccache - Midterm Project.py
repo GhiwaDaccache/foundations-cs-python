@@ -137,17 +137,16 @@ def saveTabs(file_path):
 def importTabs(file):
 # https://docs.python.org/3/tutorial/errors.html
 # To handle errors of a file name not found, we use the try, except.
-# 
+# The try statement is executed if no error occured, and the except is skipped. 
+# If an error occured while executing try, and the error match the exception in except the except clause is executed. 
         try:
             file = open(file, "r") 
             print (file.read())
             
 # https://www.w3schools.com/python/python_file_open.asp
 # To read a file we first open it in read mode (r passed as parameter), then we print with .read() method to print the content of the file.
-
         except FileNotFoundError:
             print("File not found.")
-            
             
             
             
