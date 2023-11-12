@@ -3,6 +3,7 @@ print("-----------------------------------")
 print()
 
 from urllib.request import urlopen
+import json
 tab = {}
 open_tabs = []
 
@@ -114,19 +115,28 @@ def displayTabs():
     print()
     for tab in open_tabs:
         print(tab["Title"], "is an open tab.")
-        
-        
 
 def displayAllTabs(tab_list, parent_tab=None, indent=0):
     for tab in tab_list:
         if (parent_tab is None and "parent_tab" not in tab) or ("parent_tab" in tab and tab["parent_tab"] == parent_tab):
             print("  " * indent + f"{tab['Title']} ({tab['URL']})")
             displayAllTabs(tab_list, parent_tab=tab, indent=1)
-            
-            
+                 
 displayAllTabs(open_tabs)
 ########################################################################################################################
 
+# the system should prompt the user to provide a file path as
+# a parameter to save the current state of open tabs. Each tab's information, including
+# title, content, and any nested tabs, should be written to the file in JSON format.
+# Conduct some research for additional insights on JSON.
+def saveTabs(file_path):
+
+    json_tabs = json.dumps(open_tabs)
+    
+    file_path = open("json file", "w")
+    file_path.write(json_tabs)
+    file_path.close()
+    print("Opened tabs are saved in", file_path)
 
 openTab(None)
 openTab(None)
@@ -141,9 +151,10 @@ print()
 print(open_tabs)
 print()
 
-print()
-switchTab()
-print()
+# print()
+# switchTab()
+# print()
+
 
 # openTab(2)
 # print()
@@ -152,10 +163,6 @@ print()
 # print()
 # displayAllTabs()
 
-
-
-def saveTabs():
-    pass
 
 def importTabs():
     pass
@@ -192,7 +199,8 @@ def main():
             del open_tabs[:]
             
         elif selection == 7 :
-            saveTabs()
+            file = input("Please enter the file path to save current open tabs: ")
+            saveTabs(file)
         
         elif selection == 8 :
             importTabs()  
