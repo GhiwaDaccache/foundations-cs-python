@@ -182,7 +182,9 @@ def main():
             
         elif selection == 5 :
             parent_tab_index = input("Please enter the index of the parent tab: ")
-            parent_tab_index = checkValidInput(parent_tab_index)
+            while parent_tab_index.isdigit() == False or int(parent_tab_index) < 0 or int(parent_tab_index) > len(open_tabs) -1:
+                    print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
+                    parent_tab_index = input()
             openTab(parent_tab_index)
             
         elif selection == 6 :
