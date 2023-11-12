@@ -7,18 +7,18 @@ import json
 tab = {}
 open_tabs = []
 
-def displayMenu():
+def displayMenu(): # O(1), it's constant because the number of options in the menu is fixed.
 # displayMenu function here, prints out all the options the user can choose from.
     print(
-          "This is the menu. Please make a selection from the following: \n" +
-          "\t1. Open Tab\n" + 
-          "\t2. Close Tab\n" + "\t3. Switch Tab\n" + 
-          "\t4. Display All Tabs\n" + "\t5. Open Nested Tab\n" +
-          "\t6. Clear All Tabs\n" + "\t7. Save Tabs\n" +
-          "\t8. Import Tabs\n" + "\t9. Exit"
+          "This is the menu. Please make a selection from the following: \n", 
+          "\t1. Open Tab\n",  
+          "\t2. Close Tab\n",  "\t3. Switch Tab\n",  
+          "\t4. Display All Tabs\n",  "\t5. Open Nested Tab\n", 
+          "\t6. Clear All Tabs\n", "\t7. Save Tabs\n", 
+          "\t8. Import Tabs\n", "\t9. Exit"
           )
  
-def checkValidInput(index):
+def checkValidInput(index): # O(N) the while loop here is growing. N being the number of times it will loop.
     print()
 # This if statement handles the case where the user doesn't enter an index, it gives it a value of -1 to use later on.
 # If the user doesn't return an empty input, the program enters the while loop.  
@@ -42,34 +42,31 @@ def checkValidInput(index):
                     
     return int(index)
        
-def openTab(parent_index):
+def openTab(parent_index): # O(1) because append and print have constant time complexity. 
     print()
 
-# This if condition checks if the opened tab is a nested or a parent tab. 
-# When the user chooses 1, the function will be called with none passed as parameter.
-# When the user chooses 5, the user will be prompted to enter the index of the parent tab then it will be passed to the function. 
     if parent_index == None:
-        print("New tab")
-        title = input("Please enter the title of the website: ")
-        web_url = input("Please enter the URL of the website: ")
-        tab = {"Title": title, "URL": web_url}
-        open_tabs.append(tab)
-        print("New tab opened for:", title)
-        
+        tab_type = "New tab"
     else:
-        print("New nested tab")
-        title = input("Please enter the title of the website: ")
-        web_url = input("Please enter the URL of the website: ")
-        tab = {"Title": title, "URL": web_url, "parent tab": parent_index}        
-        
-        
+        tab_type = "New nested tab"
 # The user is prompted to enter the title and url of the website they wish to open.
 # Then a dictionary called tab, will represent each opened tab, with the title as key, and url as value.
-# Once the tab is opened (dictionary created), it is added to a list called open tabs, to keep track of all the opened tabs and their order.
-        open_tabs.append(tab)
-        print("New nested tab opened for:", title)
+# Once the tab is opened (dictionary created), it is added to a list called open tabs, to keep track of all the opened tabs and their order.    
+    print(tab_type)  
+    title = input("Please enter the title of the website: ")
+    web_url = input("Please enter the URL of the website: ")
+    tab = {"Title": title, "URL": web_url, "parent tab": parent_index}
+    open_tabs.append(tab)
+    print(tab_type, "opened for:", title)
 
-def closeTab():
+        
+     
+        
+        
+
+  
+
+def closeTab(): # O(N) is the time complexity of del(), with N being the opened tabs. This is because deleting an item from a list requires shifting all the elements after the deleted item to fill the gap.
     print()
 # First the user is prompted to enter the index of the tab they wish to close.
     close_index = input("Please enter the index of the tab you wish to close: ")
@@ -84,7 +81,7 @@ def closeTab():
     else:
         del open_tabs[close_index]
 
-def switchTab():
+def switchTab(): # O(1) 
     print()
 # First the user is prompted to enter the index of the tab they wish to display.
     switch_index = input("Please enter the index of the tab you wish to switch to: ")
@@ -117,11 +114,10 @@ def displayAllTabs(tab_list, parent_tab=None, indent=0):
     for tab in tab_list:
         if (parent_tab is None and "parent_tab" not in tab) or ("parent_tab" in tab and tab["parent_tab"] == parent_tab):
             print("  " * indent + f"{tab['Title']} ({tab['URL']})")
-            displayAllTabs(tab_list, parent_tab=tab, indent=1)
-                 
+            displayAllTabs(tab_list, parent_tab=tab, indent=1)            
 ########################################################################################################################
 
-def saveTabs(file_path):
+def saveTabs(file_path): # O(1)
 # https://www.geeksforgeeks.org/json-dump-in-python/
 # To save a dictionary to python, we use the .dump() method, which converts the Python objects into appropriate json objects.
 # First we create the file where we are going to store the json file.
@@ -147,12 +143,7 @@ def importTabs(file):
 # To read a file we first open it in read mode (r passed as parameter), then we print with .read() method to print the content of the file.
         except FileNotFoundError:
             print("File not found.")
-            
-            
-            
-            
-            
-            
+        
 # openTab(None)
 # openTab(None)
 # openTab(None)
