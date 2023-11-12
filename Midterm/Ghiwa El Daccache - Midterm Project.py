@@ -127,29 +127,29 @@ def displayAllTabs1(tab_list, parent_tab=None, level=0):
 
 
 
-openTab(None)
-openTab(None)
-openTab(None)
+# openTab(None)
+# openTab(None)
+# openTab(None)
 
-print()
-print(open_tabs)
-print()
-
-# closeTab()
 # print()
 # print(open_tabs)
 # print()
 
-# print()
-# switchTab()
-# print()
+# # closeTab()
+# # print()
+# # print(open_tabs)
+# # print()
 
-openTab(2)
-print()
-print(open_tabs)
+# # print()
+# # switchTab()
+# # print()
 
-print()
-displayAllTabs()
+# openTab(2)
+# print()
+# print(open_tabs)
+
+# print()
+# displayAllTabs()
 
 
 
@@ -163,11 +163,10 @@ def importTabs():
     pass
 
 
-####IF SELECT 9 Check on python tutor#########
 def main():
     print("Hello and welcome!")
     displayMenu()
-    selection = input()
+    selection = int(input())
     
     while selection != 9 :
         
