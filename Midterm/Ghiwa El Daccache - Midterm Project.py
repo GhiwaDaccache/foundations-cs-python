@@ -26,17 +26,19 @@ def checkValidInput(index):
 
 # The while loop here, ensures that the user input is valid by checking if:
     # The input is a number
+    # To check if the user input is a number, I used .isdigit(), https://www.w3schools.com/python/ref_string_isdigit.asp 
+    # This method returns True if all characters of a string are digits. Checking if it's a digit is important to first verify that it's a valid input and second to cast it later on.
     # The input is a number <-1
     # The input is a number < number of open tabs (or len(open_tabs) -1)
 # Once the input is valid, the loop is exited and casts the input as an integer.        
         
     else:           
         while index.isdigit() == False or int(index) < -1 or int(index) > len(open_tabs) -1:
-            if index == "":
-                index = -1
-            else:
                 print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
                 index = input()
+                if index == "":
+                    return -1
+                    
     return int(index)
        
 def openTab(parent_index):
@@ -99,14 +101,15 @@ def switchTab():
 # Reference: https://realpython.com/python-web-scraping-practical-introduction/
 # First, we import a package for web scraping from Python standard library, including the urlopen() we will use.
 # To open a page, we pass url as parameter to urlopen().
-# We use the .read() method on the opened page, saved in variable Page.
-# .read() returns a sequence of bytes. decoded using .decode() to decode the bytes to a string using UTF-8.
+# We use the .read() method on the opened page, saved in variable page.
+# .read() returns a sequence of bytes, decoded using .decode() to decode the bytes to a string using UTF-8.
 # UTF-8 is the dominant encoding system for the World Wide Web.
   
     page = urlopen(url)
     html = page.read().decode("utf-8")
     print(html)
-
+    
+####################################################################################################################
 def displayTabs():
     print()
     for tab in open_tabs:
@@ -122,25 +125,25 @@ def displayAllTabs(tab_list, parent_tab=None, indent=0):
             
             
 displayAllTabs(open_tabs)
+########################################################################################################################
 
 
+openTab(None)
+openTab(None)
+openTab(None)
 
-# openTab(None)
-# openTab(None)
-# openTab(None)
+print()
+print(open_tabs)
+print()
 
-# print()
-# print(open_tabs)
-# print()
+closeTab()
+print()
+print(open_tabs)
+print()
 
-# # # closeTab()
-# # # print()
-# # # print(open_tabs)
-# # # print()
-
-# # # print()
-# # # switchTab()
-# # # print()
+print()
+switchTab()
+print()
 
 # openTab(2)
 # print()
