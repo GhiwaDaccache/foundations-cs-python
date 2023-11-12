@@ -29,7 +29,7 @@ def checkValidInput(index): # O(N) the while loop here is growing. N being the n
     # The input is a number
     # To check if the user input is a number, I used .isdigit(), https://www.w3schools.com/python/ref_string_isdigit.asp 
     # This method returns True if all characters of a string are digits. Checking if it's a digit is important to first verify that it's a valid input and second to cast it later on.
-    # The input is a number <-1
+    # The input is a number >-1
     # The input is a number < number of open tabs (or len(open_tabs) -1)
 # Once the input is valid, the loop is exited and casts the input as an integer.        
         
@@ -73,7 +73,7 @@ def closeTab(): # O(N) is the time complexity of del(), with N being the opened 
         close_index = len(open_tabs) - 1
     del open_tabs[close_index]
 
-def switchTab(): # O(1) 
+def switchTab(): 
     print()
 # First the user is prompted to enter the index of the tab they wish to display.
     switch_index = input("Please enter the index of the tab you wish to switch to: ")
@@ -98,19 +98,15 @@ def switchTab(): # O(1)
 # URL NOT VALID
   
 ####################################################################################################################
-def displayTabs():
-    print()
+def displayAllTabs():
+    
     for tab in open_tabs:
-        print(tab["Title"], "is an open tab.")
-
-def displayAllTabs(tab_list, parent_tab=None, indent=0):
-    for tab in tab_list:
         if (parent_tab is None and "parent_tab" not in tab) or ("parent_tab" in tab and tab["parent_tab"] == parent_tab):
             print("  " * indent + f"{tab['Title']} ({tab['URL']})")
             displayAllTabs(tab_list, parent_tab=tab, indent=1)            
 #####################################################################################################################
 
-def saveTabs(file_path): # O(1)
+def saveTabs(file_path): # O(N) because dump iterates over the elements in open_tabs. N being the number of open tabs.
 # https://www.geeksforgeeks.org/json-dump-in-python/
 # To save a dictionary to python, we use the .dump() method, which converts the Python objects into appropriate json objects.
 # First we create the file where we are going to store the json file.
@@ -123,7 +119,7 @@ def saveTabs(file_path): # O(1)
     file_path.close()
     print("Opened tabs are saved in", file_path)
 
-def importTabs(file):
+def importTabs(file): 
 # https://docs.python.org/3/tutorial/errors.html
 # To handle errors of a file name not found, we use the try, except.
 # The try statement is executed if no error occured, and the except is skipped. 
@@ -136,39 +132,6 @@ def importTabs(file):
 # To read a file we first open it in read mode (r passed as parameter), then we print with .read() method to print the content of the file.
         except FileNotFoundError:
             print("File not found.")
-        
-# openTab(None)
-# openTab(None)
-# openTab(1)
-# openTab(None)
-
-# print()
-# print(open_tabs)
-# print()
-
-# closeTab()
-# print()
-# print(open_tabs)
-# print()
-
-# print()
-# switchTab()
-# print()
-
-
-# openTab(2)
-# print()
-# print(open_tabs)
-
-# print()
-# displayAllTabs()
-
-# saveTabs("Spyder")
-# importTabs("json_tabs")
-
-
-    
-
 
 def main():
     print("Hello and welcome!")
@@ -187,7 +150,7 @@ def main():
             switchTab()
             
         elif selection == 4 :
-            displayTabs()
+            displayAllTabs()
             
         elif selection == 5 :
             parent_tab_index = input("Please enter the index of the parent tab: ")
