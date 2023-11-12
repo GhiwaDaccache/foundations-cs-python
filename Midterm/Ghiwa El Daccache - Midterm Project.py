@@ -57,7 +57,7 @@ def openTab(parent_index):
         print("New nested tab")
         title = input("Please enter the title of the website: ")
         web_url = input("Please enter the URL of the website: ")
-        tab = {"Title": title, "URL": web_url, "parent tab": parent_index}
+        tab = {"Title": title, "URL": web_url, "parent tab": parent_index}        
         #######################################################################################################
         #What if we search for the word that's in the title and make it the parent tab title instead of index.#
         #######################################################################################################
@@ -113,17 +113,15 @@ def displayTabs():
         print(tab["Title"], "is an open tab.")
         
         
-        
-def displayAllTabs1(tab_list, parent_tab=None, level=0):
+
+def displayAllTabs(tab_list, parent_tab=None, indent=0):
     for tab in tab_list:
-        if parent_tab is None and "parent_tab" not in tab:
-            print(tab["Title"], "is an open tab.")
-            displayAllTabs1(tab_list, parent_tab=tab, level=level + 1)
-        elif "parent_tab" in tab and tab["parent_tab"] == parent_tab:
-            print("\t", tab["Title"], "is an open nested tab")
-            displayAllTabs1(tab_list, parent_tab=tab, level=level + 1)
-
-
+        if (parent_tab is None and "parent_tab" not in tab) or ("parent_tab" in tab and tab["parent_tab"] == parent_tab):
+            print("  " * indent + f"{tab['Title']} ({tab['URL']})")
+            displayAllTabs(tab_list, parent_tab=tab, indent=1)
+            
+            
+displayAllTabs(open_tabs)
 
 
 
@@ -135,14 +133,14 @@ def displayAllTabs1(tab_list, parent_tab=None, level=0):
 # print(open_tabs)
 # print()
 
-# # closeTab()
-# # print()
-# # print(open_tabs)
-# # print()
+# # # closeTab()
+# # # print()
+# # # print(open_tabs)
+# # # print()
 
-# # print()
-# # switchTab()
-# # print()
+# # # print()
+# # # switchTab()
+# # # print()
 
 # openTab(2)
 # print()
@@ -152,9 +150,6 @@ def displayAllTabs1(tab_list, parent_tab=None, level=0):
 # displayAllTabs()
 
 
-
-def clearTabs(): 
-    pass
 
 def saveTabs():
     pass
@@ -188,7 +183,8 @@ def main():
             openTab(parent_tab_index)
             
         elif selection == 6 :
-            clearTabs()
+            print("All tabs are cleared.")
+            del open_tabs[:]
             
         elif selection == 7 :
             saveTabs()
