@@ -44,13 +44,13 @@ def checkValidInput(index): # O(N) the while loop here is growing. N being the n
        
 def openTab(parent_index): # O(1) because append and print have constant time complexity. 
     print()
-
+# This if statement is 
     if parent_index == None:
         tab_type = "New tab"
     else:
         tab_type = "New nested tab"
 # The user is prompted to enter the title and url of the website they wish to open.
-# Then a dictionary called tab, will represent each opened tab, with the title as key, and url as value.
+# Then a dictionary called tab, will represent each opened tab, 
 # Once the tab is opened (dictionary created), it is added to a list called open tabs, to keep track of all the opened tabs and their order.    
     print(tab_type)  
     title = input("Please enter the title of the website: ")
@@ -58,13 +58,6 @@ def openTab(parent_index): # O(1) because append and print have constant time co
     tab = {"Title": title, "URL": web_url, "parent tab": parent_index}
     open_tabs.append(tab)
     print(tab_type, "opened for:", title)
-
-        
-     
-        
-        
-
-  
 
 def closeTab(): # O(N) is the time complexity of del(), with N being the opened tabs. This is because deleting an item from a list requires shifting all the elements after the deleted item to fill the gap.
     print()
@@ -77,9 +70,8 @@ def closeTab(): # O(N) is the time complexity of del(), with N being the opened 
 # del my_list1[i], in this format del deletes an item at a specific index i.
 # The if statement below, checks if the input is -1, means the user did not enter any value, so it closes the last tab opened, otherwise it closes the specified one.
     if close_index == -1:
-        del open_tabs[len(open_tabs) - 1]
-    else:
-        del open_tabs[close_index]
+        close_index = [len(open_tabs) - 1]
+    del open_tabs[close_index]
 
 def switchTab(): # O(1) 
     print()
