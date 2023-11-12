@@ -130,11 +130,14 @@ displayAllTabs(open_tabs)
 # title, content, and any nested tabs, should be written to the file in JSON format.
 # Conduct some research for additional insights on JSON.
 def saveTabs(file_path):
-
-    json_tabs = json.dumps(open_tabs)
-    
-    file_path = open("json file", "w")
-    file_path.write(json_tabs)
+# https://www.geeksforgeeks.org/json-dump-in-python/
+# To save a dictionary to python, we use the .dump() method, which converts the Python objects into appropriate json objects.
+# First we create the file where we are going to store the json file.
+# https://www.w3schools.com/python/python_file_handling.asp
+# I passed first the file name as parameter, then "w" to open a file for writing, or create it if it does not exist.  
+# 
+    file_path = open("json tabs file", "w")
+    json.dump(open_tabs, file_path, indent = 3)
     file_path.close()
     print("Opened tabs are saved in", file_path)
 
@@ -144,12 +147,12 @@ openTab(None)
 
 print()
 print(open_tabs)
-print()
+# print()
 
-closeTab()
-print()
-print(open_tabs)
-print()
+# closeTab()
+# print()
+# print(open_tabs)
+# print()
 
 # print()
 # switchTab()
@@ -162,6 +165,8 @@ print()
 
 # print()
 # displayAllTabs()
+
+saveTabs("spyder")
 
 
 def importTabs():
