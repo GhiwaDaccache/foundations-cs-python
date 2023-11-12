@@ -61,9 +61,6 @@ def openTab(parent_index):
         title = input("Please enter the title of the website: ")
         web_url = input("Please enter the URL of the website: ")
         tab = {"Title": title, "URL": web_url, "parent tab": parent_index}        
-        #######################################################################################################
-        #What if we search for the word that's in the title and make it the parent tab title instead of index.#
-        #######################################################################################################
         
         
 # The user is prompted to enter the title and url of the website they wish to open.
@@ -122,31 +119,47 @@ def displayAllTabs(tab_list, parent_tab=None, indent=0):
             print("  " * indent + f"{tab['Title']} ({tab['URL']})")
             displayAllTabs(tab_list, parent_tab=tab, indent=1)
                  
-displayAllTabs(open_tabs)
 ########################################################################################################################
 
-# the system should prompt the user to provide a file path as
-# a parameter to save the current state of open tabs. Each tab's information, including
-# title, content, and any nested tabs, should be written to the file in JSON format.
-# Conduct some research for additional insights on JSON.
 def saveTabs(file_path):
 # https://www.geeksforgeeks.org/json-dump-in-python/
 # To save a dictionary to python, we use the .dump() method, which converts the Python objects into appropriate json objects.
 # First we create the file where we are going to store the json file.
 # https://www.w3schools.com/python/python_file_handling.asp
 # I passed first the file name as parameter, then "w" to open a file for writing, or create it if it does not exist.  
-# 
-    file_path = open("json tabs file", "w")
+# Then the file is closed with .close()
+
+    file_path = open("json_tabs", "w")
     json.dump(open_tabs, file_path, indent = 3)
     file_path.close()
     print("Opened tabs are saved in", file_path)
 
-openTab(None)
-openTab(None)
-openTab(None)
+def importTabs(file):
+# https://docs.python.org/3/tutorial/errors.html
+# To handle errors of a file name not found, we use the try, except.
+# 
+        try:
+            file = open(file, "r") 
+            print (file.read())
+            
+# https://www.w3schools.com/python/python_file_open.asp
+# To read a file we first open it in read mode (r passed as parameter), then we print with .read() method to print the content of the file.
 
-print()
-print(open_tabs)
+        except FileNotFoundError:
+            print("File not found.")
+            
+            
+            
+            
+            
+            
+            
+# openTab(None)
+# openTab(None)
+# openTab(None)
+
+# print()
+# print(open_tabs)
 # print()
 
 # closeTab()
@@ -166,11 +179,11 @@ print(open_tabs)
 # print()
 # displayAllTabs()
 
-saveTabs("spyder")
+# saveTabs("Spyder")
+# importTabs("json_tabs")
 
 
-def importTabs():
-    pass
+    
 
 
 def main():
@@ -208,7 +221,8 @@ def main():
             saveTabs(file)
         
         elif selection == 8 :
-            importTabs()  
+            file_name = input("Please enter file name containing tabs to load: ")
+            importTabs(file_name)  
             
         else:
             print("Please choose a number from the list")
