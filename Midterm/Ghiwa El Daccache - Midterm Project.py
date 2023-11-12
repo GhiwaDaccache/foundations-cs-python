@@ -16,7 +16,29 @@ def displayMenu():
           "\t6. Clear All Tabs\n" + "\t7. Save Tabs\n" +
           "\t8. Import Tabs\n" + "\t9. Exit"
           )
+ 
+def checkValidInput(index):
+    print()
+# This if statement handles the case where the user doesn't enter an index, it gives it a value of -1 to use later on.
+# If the user doesn't return an empty input, the program enters the while loop.  
+    if index == "":
+        index = -1
+
+# The while loop here, ensures that the user input is valid by checking if:
+    # The input is a number
+    # The input is a number <-1
+    # The input is a number < number of open tabs (or len(open_tabs) -1)
+# Once the input is valid, the loop is exited and casts the input as an integer.        
         
+    else:           
+        while index.isdigit() == False or int(index) < -1 or int(index) > len(open_tabs) -1:
+            if index == "":
+                index = -1
+            else:
+                print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
+                index = input()
+    return int(index)
+       
 def openTab(parent_index):
     print()
 
@@ -36,31 +58,17 @@ def openTab(parent_index):
         title = input("Please enter the title of the website: ")
         web_url = input("Please enter the URL of the website: ")
         tab = {"Title": title, "URL": web_url, "parent tab": parent_index}
+        #######################################################################################################
+        #What if we search for the word that's in the title and make it the parent tab title instead of index.#
+        #######################################################################################################
+        
+        
 # The user is prompted to enter the title and url of the website they wish to open.
 # Then a dictionary called tab, will represent each opened tab, with the title as key, and url as value.
 # Once the tab is opened (dictionary created), it is added to a list called open tabs, to keep track of all the opened tabs and their order.
         open_tabs.append(tab)
         print("New nested tab opened for:", title)
 
-def checkValidInput(index):
-    print()
-# This if statement handles the case where the user doesn't enter an index, it gives it a value of -1 to use later on.
-# If the user doesn't return an empty input, the program enters the while loop.  
-    if index == "":
-        index = -1
-
-# The while loop here, ensures that the user input is valid by checking if:
-    # The input is a number
-    # The input is a number <-1
-    # The input is a number < number of open tabs (or len(open_tabs) -1)
-# Once the input is valid, the loop is exited and casts the input as an integer.        
-        
-    else:           
-        while index.isdigit() == False or int(index) < -1 or int(index) > len(open_tabs) -1: 
-           print("Invalid input, please enter a valid index (>=0 or < number of open tabs)") 
-           index = input()
-    return int(index)
-           
 def closeTab():
     print()
 # First the user is prompted to enter the index of the tab they wish to close.
@@ -103,6 +111,20 @@ def displayTabs():
     print()
     for tab in open_tabs:
         print(tab["Title"], "is an open tab.")
+        
+        
+        
+def displayAllTabs1(tab_list, parent_tab=None, level=0):
+    for tab in tab_list:
+        if parent_tab is None and "parent_tab" not in tab:
+            print(tab["Title"], "is an open tab.")
+            displayAllTabs1(tab_list, parent_tab=tab, level=level + 1)
+        elif "parent_tab" in tab and tab["parent_tab"] == parent_tab:
+            print("\t", tab["Title"], "is an open nested tab")
+            displayAllTabs1(tab_list, parent_tab=tab, level=level + 1)
+
+
+
 
 
 openTab(None)
@@ -113,18 +135,22 @@ print()
 print(open_tabs)
 print()
 
-closeTab()
-print()
-print(open_tabs)
-print()
+# closeTab()
+# print()
+# print(open_tabs)
+# print()
 
-print()
-switchTab()
-print()
+# print()
+# switchTab()
+# print()
 
 openTab(2)
 print()
 print(open_tabs)
+
+print()
+displayAllTabs()
+
 
 
 def clearTabs(): 
@@ -137,11 +163,12 @@ def importTabs():
     pass
 
 
-
+####IF SELECT 9 Check on python tutor#########
 def main():
     print("Hello and welcome!")
     displayMenu()
-    selection = int(input())
+    selection = input()
+    
     while selection != 9 :
         
         if selection == 1 :
@@ -157,7 +184,8 @@ def main():
             displayTabs()
             
         elif selection == 5 :
-            parent_tab_index = int(input("Please enter the index of the parent tab: "))
+            parent_tab_index = input("Please enter the index of the parent tab: ")
+            parent_tab_index = checkValidInput(parent_tab_index)
             openTab(parent_tab_index)
             
         elif selection == 6 :
@@ -176,4 +204,5 @@ def main():
         selection = int(input())
     print("You exited")
     
+main()
 
