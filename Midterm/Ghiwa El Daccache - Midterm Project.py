@@ -44,13 +44,13 @@ def checkValidInput(index): # O(N) the while loop here is growing. N being the n
        
 def openTab(parent_index): # O(1) because append and print have constant time complexity. 
     print()
-# This if statement is 
+ 
     if parent_index == None:
         tab_type = "New tab"
     else:
         tab_type = "New nested tab"
 # The user is prompted to enter the title and url of the website they wish to open.
-# Then a dictionary called tab, will represent each opened tab, 
+# Then a dictionary called tab, will represent each opened tab, with the title, url and parent tab if it exists.  
 # Once the tab is opened (dictionary created), it is added to a list called open tabs, to keep track of all the opened tabs and their order.    
     print(tab_type)  
     title = input("Please enter the title of the website: ")
@@ -70,7 +70,7 @@ def closeTab(): # O(N) is the time complexity of del(), with N being the opened 
 # del my_list1[i], in this format del deletes an item at a specific index i.
 # The if statement below, checks if the input is -1, means the user did not enter any value, so it closes the last tab opened, otherwise it closes the specified one.
     if close_index == -1:
-        close_index = [len(open_tabs) - 1]
+        close_index = len(open_tabs) - 1
     del open_tabs[close_index]
 
 def switchTab(): # O(1) 
@@ -80,9 +80,9 @@ def switchTab(): # O(1)
     switch_index = checkValidInput(switch_index)
 # The if statement below, checks if the input is -1, means the user did not enter any value, so it switches to the last tab opened, otherwise it switches to the specified one.     
     if switch_index == -1: 
-        url = open_tabs[len(open_tabs) -1]["URL"] 
-    else: 
-        url = open_tabs[switch_index]["URL"]
+        switch_index = len(open_tabs) -1
+
+    url = open_tabs[switch_index]["URL"]
 
 # The below block is to print the HTML content of the URL. 
 # Reference: https://realpython.com/python-web-scraping-practical-introduction/
@@ -95,7 +95,8 @@ def switchTab(): # O(1)
     page = urlopen(url)
     html = page.read().decode("utf-8")
     print(html)
-    
+# URL NOT VALID
+  
 ####################################################################################################################
 def displayTabs():
     print()
@@ -107,7 +108,7 @@ def displayAllTabs(tab_list, parent_tab=None, indent=0):
         if (parent_tab is None and "parent_tab" not in tab) or ("parent_tab" in tab and tab["parent_tab"] == parent_tab):
             print("  " * indent + f"{tab['Title']} ({tab['URL']})")
             displayAllTabs(tab_list, parent_tab=tab, indent=1)            
-########################################################################################################################
+#####################################################################################################################
 
 def saveTabs(file_path): # O(1)
 # https://www.geeksforgeeks.org/json-dump-in-python/
@@ -138,6 +139,7 @@ def importTabs(file):
         
 # openTab(None)
 # openTab(None)
+# openTab(1)
 # openTab(None)
 
 # print()
