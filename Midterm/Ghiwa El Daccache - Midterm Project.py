@@ -7,6 +7,7 @@ import json
 tab = {}
 open_tabs = []
 
+
 def displayMenu(): # O(1), it's constant because the number of options in the menu is fixed.
 # displayMenu function here, prints out all the options the user can choose from.
     print(
@@ -30,7 +31,7 @@ def checkValidInput(index): # O(N) the while loop here is growing. N being the n
     # To check if the user input is a number, I used .isdigit(), https://www.w3schools.com/python/ref_string_isdigit.asp 
     # This method returns True if all characters of a string are digits. Checking if it's a digit is important to first verify that it's a valid input and second to cast it later on.
     # The input is a number >-1
-    # The input is a number < number of open tabs (or len(open_tabs) -1)
+    # The input is a number < number of open tabs.
 # Once the input is valid, the loop is exited and casts the input as an integer.        
         
     else:           
@@ -58,6 +59,7 @@ def openTab(parent_index): # O(1) because append and print have constant time co
     tab = {"Title": title, "URL": web_url, "parent tab": parent_index}
     open_tabs.append(tab)
     print(tab_type, "opened for:", title)
+    
 
 def closeTab(): # O(N) is the time complexity of del(), with N being the opened tabs. This is because deleting an item from a list requires shifting all the elements after the deleted item to fill the gap.
     print()
@@ -95,7 +97,6 @@ def switchTab():
     page = urlopen(url)
     html = page.read().decode("utf-8")
     print(html)
-# URL NOT VALID
   
 ####################################################################################################################
 def displayAllTabs():
