@@ -99,12 +99,17 @@ def switchTab():
     print(html)
   
 ####################################################################################################################
-def displayAllTabs():
-    
-    for tab in open_tabs:
-        if (parent_tab is None and "parent_tab" not in tab) or ("parent_tab" in tab and tab["parent_tab"] == parent_tab):
-            print("  " * indent + f"{tab['Title']} ({tab['URL']})")
-            displayAllTabs(tab_list, parent_tab=tab, indent=1)            
+# def displayAllTabs():
+#     for tab in open_tabs:
+#         if parent_tab is None:
+#             print("  " * 0 + "{tab["Title"]}, ({tab["URL"]})")
+#         else:
+#             print("  " * 1 + "{tab["Title"]}, ({tab["URL"]})")
+#
+# This is an attempt to solve the 4th user choice. 
+# The for loop iterates over each element in open_tabs.
+# The if statement checks if parent_tab is None (so it's not a nested tab), and prints it without an indent.
+# Else it will print with an indent, however it won't be in relation to(directly below) its parent tab.  
 #####################################################################################################################
 
 def saveTabs(file_path): # O(N) because dump iterates over the elements in open_tabs. N being the number of open tabs.
@@ -143,15 +148,19 @@ def main():
         
         if selection == 1 :
             openTab(None)
+            print(open_tabs)
             
         elif selection == 2 :
+            print(open_tabs)
             closeTab()
+            print(open_tabs)
             
         elif selection == 3 :
+            print(open_tabs)
             switchTab()
             
         elif selection == 4 :
-            displayAllTabs()
+            print("Check comment line 102.")
             
         elif selection == 5 :
             parent_tab_index = input("Please enter the index of the parent tab: ")
@@ -163,6 +172,7 @@ def main():
         elif selection == 6 :
             print("All tabs are cleared.")
             del open_tabs[:]
+            print(open_tabs)
             
         elif selection == 7 :
             file = input("Please enter the file path to save current open tabs: ")
