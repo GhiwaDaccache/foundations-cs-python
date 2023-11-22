@@ -28,24 +28,21 @@ class Nodes:
 class LinkedList:
     def __init__(self):
         self.head = None
-        # self.tail = None
+        self.tail = None
         self.size = 0
         
     def addNode(self, node):
-        
+	    
         if self.size == 0:
             self.head = node
-            # self.tail = node
+            self.tail = node
             self.size += 1
-            
-        elif self.size == 1:
-            self.head.next = node
-            self.next = None
+
+        else:
+            self.tail.next = node
+            self.tail = node
             self.size += 1
         
-        else:
-            self.next = node
-            node.next = None 
             
     
 def main():
