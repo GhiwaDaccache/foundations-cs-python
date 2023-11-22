@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ##############
 # Assignment 4
 ##############
@@ -13,7 +12,7 @@ def displayMenu():
         "\t6. Exit"
         )
 
-=======
+#TEST CHANGE
 #####
 # Assignment 4
->>>>>>> c59196432879e1adbb05c0c7c17b3e4d36fdd726
+# TEST 
