@@ -31,8 +31,8 @@ class LinkedList:
         self.tail = None
         self.size = 0
         
-    def addNode(self, node):
-	    
+    def addNode(self, value):
+        node = Nodes(value)
         if self.size == 0:
             self.head = node
             self.tail = node
@@ -42,7 +42,17 @@ class LinkedList:
             self.tail.next = node
             self.tail = node
             self.size += 1
-        
+            
+    def displayNodes(self):
+        current = self.head
+        if current == None:
+          print("Empty linked list")
+          return 
+        else:
+          while current != None:
+              print(current.info, end=" -> ")
+              current = current.next
+          print(None)
             
     
 def main():
@@ -52,8 +62,24 @@ def main():
     while choice != 6:
         if choice == 1:
             displayLLOptions()
-            LL_choice = int(input())
-            return #for now
+            LL_choice = input()
+            linked_list = LinkedList()
+            
+            while LL_choice != "d":
+                
+                if LL_choice == "a":
+                    node = int(input("Please enter a numerical value for your node: "))
+                    linked_list.addNode(node)
+
+                elif LL_choice == "b":
+                    linked_list.displayNodes()
+                    
+                displayLLOptions() 
+                LL_choice = input()
+                
+            print("You're back to main menu\n")
+            displayMenu()
+            choice = int(input())
     print("You exited.")
             
     
