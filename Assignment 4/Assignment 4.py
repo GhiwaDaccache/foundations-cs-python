@@ -1,7 +1,7 @@
 ##############
 # Assignment 4
 ##############
-
+indices = []
 def displayMenu():
     print("Please select a number from the following:",
         "\n\t1. Singly Linked List\n",
@@ -53,10 +53,10 @@ class LinkedList:
               print(current.info, end=" -> ")
               current = current.next
           print(None)
+          
 
     def searchNode(self, value):
         if self.size != 0:
-            indices = []
             current = self.head
             while current != None:
                 for i in range(self.size):
@@ -72,10 +72,19 @@ class LinkedList:
           return False
         return True
     
-    def deleteNode(self, value):
-        print("node deleted")
-          
-    
+    def deleteNode(self, index):
+# Then we apply a for loop from 0 to less than index - 1 and update our temp to temp. next in each iteration.
+        current = self.head
+        index = 0
+        for x in indices:
+            while x != index:
+                previous = current
+                current = current.next
+                index += 1
+            previous.next = current.next
+            current.next = None
+            
+                
     
     
     
