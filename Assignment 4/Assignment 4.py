@@ -54,7 +54,7 @@ class LinkedList:
               current = current.next
           print(None)
 
-    def deleteNode(self, value):
+    def searchNode(self, value):
         if self.size != 0:
             indices = []
             current = self.head
@@ -63,14 +63,18 @@ class LinkedList:
                     if current.info == value:
                         indices.append(i)
                     current = current.next
-                break
+        
         else:
           print("List is empty")
-         
+          
         if len(indices) == 0:
-          print("The is not in the list")
-        else:
-          print("The value is at:", indices)
+          print("The value is not in the list")
+          return False
+        return True
+    
+    def deleteNode(self, value):
+        print("node deleted")
+          
     
     
     
@@ -96,7 +100,8 @@ def main():
                 
                 elif LL_choice == "c":
                     value = int(input("Please enter the value of the node/s you wish to delete: "))
-                    linked_list.deleteNode(value)
+                    if linked_list.searchNode(value) == True:
+                        linked_list.deleteNode(value)
                     
                 displayLLOptions() 
                 LL_choice = input()
