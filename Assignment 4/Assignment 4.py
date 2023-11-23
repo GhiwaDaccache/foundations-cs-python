@@ -1,7 +1,6 @@
 ##############
 # Assignment 4
 ##############
-indices = []
 def displayMenu():
     print("Please select a number from the following:",
         "\n\t1. Singly Linked List\n",
@@ -56,33 +55,44 @@ class LinkedList:
           
 
     def searchNode(self, value):
+        global indices 
         if self.size != 0:
+            index = 0
             current = self.head
             while current != None:
-                for i in range(self.size):
-                    if current.info == value:
-                        indices.append(i)
-                    current = current.next
+                if current.info == value:
+                    indices.append(index)
+                current = current.next
+                index += 1
         
         else:
           print("List is empty")
-          
+          return False
+      
         if len(indices) == 0:
           print("The value is not in the list")
           return False
         return True
     
-    def deleteNode(self, index):
-# Then we apply a for loop from 0 to less than index - 1 and update our temp to temp. next in each iteration.
+    def deleteNode(self, ghiwa):
         current = self.head
-        index = 0
+        previous = None
+        loop_index = 0
         for x in indices:
-            while x != index:
+            while loop_index != x and current != None:
                 previous = current
                 current = current.next
-                index += 1
-            previous.next = current.next
-            current.next = None
+                loop_index += 1
+            if previous != None and current != None:   
+                previous.next = current.next
+                current = current.next
+            elif current.next == None:
+                previous.next = None
+            elif previous == None:
+                self.head = current.next
+                current.next = None
+                current = self.head
+            
             
                 
     
@@ -110,7 +120,7 @@ def main():
                 elif LL_choice == "c":
                     value = int(input("Please enter the value of the node/s you wish to delete: "))
                     if linked_list.searchNode(value) == True:
-                        linked_list.deleteNode(value)
+                        linked_list.deleteNode(indices)
                     
                 displayLLOptions() 
                 LL_choice = input()
