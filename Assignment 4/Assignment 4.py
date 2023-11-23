@@ -56,29 +56,22 @@ class LinkedList:
 # If the user chooses “c”, the program prompts for a value to search for in the linked list
 #and removes all nodes with that value. 
     def deleteNode(self, value):
-        indices = []
-        current = self.head
         if self.size != 0:
-          for i in range(self.size):
+            indices = []
+            current = self.head
             while current != None:
-              if current.info == value:
-                indices.append(i)
-                current = current.next
-              else:
-                current = current.next
-            break 
+                for i in range(self.size):
+                    if current.info == value:
+                        indices.append(i)
+                    current = current.next
+                break
         else:
           print("List is empty")
-              
-     
+         
         if len(indices) == 0:
           print("The is not in the list")
         else:
           print("The value is at:", indices)
-    
-    
-    
-    
     
     
     
