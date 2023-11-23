@@ -53,8 +53,7 @@ class LinkedList:
               print(current.info, end=" -> ")
               current = current.next
           print(None)
-# If the user chooses “c”, the program prompts for a value to search for in the linked list
-#and removes all nodes with that value. 
+
     def deleteNode(self, value):
         if self.size != 0:
             indices = []
@@ -94,6 +93,10 @@ def main():
 
                 elif LL_choice == "b":
                     linked_list.displayNodes()
+                
+                elif LL_choice == "c":
+                    value = int(input("Please enter the value of the node/s you wish to delete: "))
+                    linked_list.deleteNode(value)
                     
                 displayLLOptions() 
                 LL_choice = input()
