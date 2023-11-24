@@ -95,7 +95,6 @@ class LinkedList:
                 self.size -= 1
                 loop_index +=1
                 
-                
             elif loop_index == x and current.next != None:   
                 previous.next = current.next
                 current = current.next
@@ -132,7 +131,9 @@ class Stack:
             self.size -= 1
         
     def checkPalindrome(self, string):
-        pass
+        for x in string:
+            stack.push(x)
+
     
     
     
