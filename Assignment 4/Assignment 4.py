@@ -56,7 +56,8 @@ class LinkedList:
           
 
     def searchNode(self, value):
-        global indices 
+        global indices
+        indices = []
         if self.size != 0:
             index = 0
             current = self.head
@@ -75,15 +76,16 @@ class LinkedList:
           return False
         return True
     
+
     def deleteNode(self, ghiwa):
         current = self.head
-        previous = self.head 
+        previous = self.head
         loop_index = 0
         for x in ghiwa:
             while loop_index != x and current.next != None:
                 previous = current
                 current = current.next
-                loop_index += 1  
+                loop_index += 1    
                 
             if loop_index == x and current == self.head:   
                 self.head = self.head.next
@@ -91,7 +93,8 @@ class LinkedList:
                 current = self.head
                 previous = self.head
                 self.size -= 1
-                loop_index += 1
+                loop_index +=1
+                
                 
             elif loop_index == x and current.next != None:   
                 previous.next = current.next
@@ -108,20 +111,7 @@ class LinkedList:
             
                 
                 
-                
-                
-                
-            if previous != None and current != None:   
-                previous.next = current.next
-                current = current.next
-            elif current.next == None:
-                if current == self.head:
-                    self.head = None
-                else:
-                    previous.next = None
-            elif loop_index == 0:
-                self.head = self.head.next
-                current = self.head
+    
                 
 class List:
     def __init__(self):
