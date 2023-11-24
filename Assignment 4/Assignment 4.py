@@ -54,7 +54,7 @@ class LinkedList:
               current = current.next
           print(None)
           
-
+          
     def searchNode(self, value):
         global indices
         indices = []
@@ -77,11 +77,11 @@ class LinkedList:
         return True
     
 
-    def deleteNode(self, ghiwa):
+    def deleteNode(self, index_list):
         current = self.head
         previous = self.head
         loop_index = 0
-        for x in ghiwa:
+        for x in index_list:
             while loop_index != x and current.next != None:
                 previous = current
                 current = current.next
@@ -106,17 +106,55 @@ class LinkedList:
                 previous.next = None
                 self.tail = previous
                 self.size -= 1
-                
-                
-            
-                
-                
-    
-                
-class List:
+  
+class Stack:
     def __init__(self):
+        self.elements = []
+        self.size = 0
+       
+    def push(self, value):
+        self.elements.append(value)
+        self.size += 1
+    
+    def peek(self):
+        if self.size == 0:
+            print("Empty stack.")
+        else:
+            return self.elements[len - 1]
+    
+    def pop(self):
+        if self.size == 0: 
+            print("Empty stack.")
+        else:
+            current = self.head
+            self.head = self.head.next
+            current.next = None
+            self.size -= 1
+        
+    def checkPalindrome(self, string):
         pass
-              
+    
+    
+    
+    
+# the program prompts for a string s and checks if this string is apalindrome. 
+# Use a stack or queue (or both) using a list (Not a Linked List) as your data
+# structure to determine if it is a palindrome.
+
+                           
+class Student:
+    def __init__(self, name, midterm_grade, final_grade, good_attitude):
+# class Student, class Node and class Priority Queue
+        self.name = name
+        self.midterm_grade = midterm_grade
+        self.final_grade = final_grade
+        self.good_attitude = good_attitude
+# appending instances to list
+# list.append(geeks(2, 3))
+# list.append(geeks(12, 13))
+# list.append(geeks(22, 33))
+ 
+
 
     
             
