@@ -149,7 +149,7 @@ class Stack:
     
     def checkPalindrome(self):
         for i in range(len(self.elements) //2):
-            while self.size > 1 :
+            while self.size > 1:
                 if self.peek() == self.peekReverse():
                     self.pop()
                     self.dequeue()
@@ -158,7 +158,6 @@ class Stack:
                 else:
                     print("The string is not a palindrome")
                     break
-
 
                            
 class Student:
@@ -185,14 +184,15 @@ class Student:
 def main():
     name = input("Hello! Please enter your name: \n")
     print("Welcome", name,"!")
+    print()
     displayMenu()
     choice = int(input())
     while choice != 6:
         if choice == 1:
             displayLLOptions()
             LL_choice = input()
-            linked_list = LinkedList()
             
+            linked_list = LinkedList()
             while LL_choice != "d":
                 
                 if LL_choice == "a":
@@ -206,12 +206,15 @@ def main():
                     value = int(input("Please enter the value of the node/s you wish to delete: "))
                     if linked_list.searchNode(value) == True:
                         linked_list.deleteNode(indices)
-                    
+                        print("Node/s deleted.")         
+                else:
+                    print("Please choose from the list")
+                
+                print()
                 displayLLOptions() 
                 LL_choice = input()
                 
             print("You're back to main menu\n")
-            displayMenu()
         
         elif choice == 2:
             st = input("Please enter your string: ")
@@ -219,7 +222,7 @@ def main():
             stack.transformList(st)
             stack.checkPalindrome()
             
-            
+        print()    
         displayMenu()
         choice = int(input())
     print("You exited.")
