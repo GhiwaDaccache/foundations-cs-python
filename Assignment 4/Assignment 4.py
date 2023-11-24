@@ -110,37 +110,55 @@ class Stack:
     def __init__(self):
         self.elements = []
         self.size = 0
-       
+    
     def push(self, value):
         self.elements.append(value)
         self.size += 1
+    
+    def transformList(self, string):
+        for x in string:
+            self.push(x)
+        print(self.elements)
     
     def peek(self):
         if self.size == 0:
             print("Empty stack.")
         else:
-            return self.elements[len - 1]
+            return self.elements[len(self.elements) - 1]
+    
+    def peekReverse(self):
+        if self.size == 0:
+            print("Empty stack.")
+        else:
+            return self.elements[0]
     
     def pop(self):
         if self.size == 0: 
             print("Empty stack.")
         else:
-            current = self.head
-            self.head = self.head.next
-            current.next = None
+            self.elements = self.elements[:-1]
             self.size -= 1
-        
-    def checkPalindrome(self, string):
-        for x in string:
-            stack.push(x)
+    
+    def dequeue(self): 
+        if self.size == 0: 
+            print("Empty stack.")
+        else:
+            self.elements = self.elements[1: ]
+            self.size -= 1
+            print(self.elements)
+    
+    def checkPalindrome(self):
+        for i in range(len(self.elements) //2):
+            while self.size > 1 :
+                if self.peek() == self.peekReverse():
+                    self.pop()
+                    self.dequeue()
+                    print("The string is a palindrome")
+                
+                else:
+                    print("The string is not a palindrome")
+                    break
 
-    
-    
-    
-    
-# the program prompts for a string s and checks if this string is apalindrome. 
-# Use a stack or queue (or both) using a list (Not a Linked List) as your data
-# structure to determine if it is a palindrome.
 
                            
 class Student:
@@ -194,7 +212,16 @@ def main():
                 
             print("You're back to main menu\n")
             displayMenu()
-            choice = int(input())
+        
+        elif choice == 2:
+            st = input("Please enter your string: ")
+            stack = Stack()
+            stack.transformList(st)
+            stack.checkPalindrome()
+            
+            
+        displayMenu()
+        choice = int(input())
     print("You exited.")
             
     
