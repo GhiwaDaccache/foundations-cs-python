@@ -1,6 +1,7 @@
 ##############
 # Assignment 4
 ##############
+indices = []
 def displayMenu():
     print("Please select a number from the following:",
         "\n\t1. Singly Linked List\n",
@@ -76,22 +77,58 @@ class LinkedList:
     
     def deleteNode(self, ghiwa):
         current = self.head
-        previous = None
+        previous = self.head 
         loop_index = 0
-        for x in indices:
-            while loop_index != x and current != None:
+        for x in ghiwa:
+            while loop_index != x and current.next != None:
                 previous = current
                 current = current.next
+                loop_index += 1  
+                
+            if loop_index == x and current == self.head:   
+                self.head = self.head.next
+                current.next = None
+                current = self.head
+                previous = self.head
+                self.size -= 1
                 loop_index += 1
+                
+            elif loop_index == x and current.next != None:   
+                previous.next = current.next
+                current = current.next
+                self.size -= 1
+                loop_index +=1
+                
+            elif loop_index == x and current.next == None:
+                previous.next = None
+                self.tail = previous
+                self.size -= 1
+                
+                
+            
+                
+                
+                
+                
+                
             if previous != None and current != None:   
                 previous.next = current.next
                 current = current.next
             elif current.next == None:
-                previous.next = None
-            elif previous == None:
-                self.head = current.next
-                current.next = None
+                if current == self.head:
+                    self.head = None
+                else:
+                    previous.next = None
+            elif loop_index == 0:
+                self.head = self.head.next
                 current = self.head
+                
+class List:
+    def __init__(self):
+        pass
+              
+
+    
             
             
                 
@@ -99,7 +136,8 @@ class LinkedList:
     
     
 def main():
-    print("Hello and welcome!\n")
+    name = input("Hello! Please enter your name: \n")
+    print("Welcome", name,"!")
     displayMenu()
     choice = int(input())
     while choice != 6:
