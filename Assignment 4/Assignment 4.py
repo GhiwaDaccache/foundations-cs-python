@@ -178,57 +178,37 @@ class PriorityQueue:
             return 
         else:
             while current != None:
-                print(current.info, end=" -> ")
+                print(current.info.name, end=" -> ")
                 current = current.next
-                print(None)  
-
+            print(None)  
 
     def addStudent(self, student):
         node = Node(student)
         if self.size == 0:
             self.head = node
             self.size += 1
+        else:
+            if student.good_attitude == True and self.head.info.final_grade < node.info.final_grade:
+                node.next = self.head
+                self.head = node
+                self.size +=1
+    
+            else:
+                current = self.head
+                previous = self.head
+                while current != None and current.info.final_grade > node.info.final_grade :
+                    previous = current
+                    current = current.next
+                previous.next = node
+                node.next = current
+                self.size += 1
 
-
-
+                
+                    
+                
             
-      
+        
 
-    #     if node.info < self.head.info:
-    #       # In this condition, the node we are adding has a higher priority than the node that is currently at the head posiiton (so in our case a smaller number than head ia added)
-    #       # Hence why here we must adjust head to point to the new node as it has a higher priority
-    #       node.next = self.head
-    #       self.head = node
-    #       self.size += 1
-    #     else:
-    #       current = self.head
-    #       previous = current
-    #       while current != None and current.info <= node.info:
-    #         previous = current
-    #         current = current.next
-    #       previous.next = node
-    #       node.next = current
-    #       self.size += 1
-          
-    # def dequeue(self):
-    #   # Dequeue will remain the same as a regular queue since the logic is still the same.
-    #   if self.size == 0:
-    #     print("Your Queue is Empty! Enqueue first.")
-    #   elif self.size == 1:
-    #     print("We are removing:", self.head.info)
-    #     self.head = None
-    #     self.size -= 1
-    #   else:
-    #     print("We are removing:", self.head.info)
-    #     current = self.head
-    #     self.head = self.head.next
-    #     current.next = None
-    #     self.size -= 1
-# appending instances to list
-# list.append(geeks(2, 3))
-# list.append(geeks(12, 13))
-# list.append(geeks(22, 33))
- 
 
 
     
