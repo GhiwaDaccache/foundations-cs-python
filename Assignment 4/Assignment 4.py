@@ -20,7 +20,7 @@ def displayLLOptions():
           "\td. Return to main menu\n"
          )
 
-class Nodes:
+class Node:
     def __init__(self, info):
         self.info = info
         self.next = None
@@ -32,7 +32,7 @@ class LinkedList:
         self.size = 0
         
     def addNode(self, value):
-        node = Nodes(value)
+        node = Node(value)
         if self.size == 0:
             self.head = node
             self.tail = node
@@ -159,14 +159,71 @@ class Stack:
                     print("The string is not a palindrome")
                     break
 
-                           
 class Student:
     def __init__(self, name, midterm_grade, final_grade, good_attitude):
-# class Student, class Node and class Priority Queue
         self.name = name
         self.midterm_grade = midterm_grade
         self.final_grade = final_grade
         self.good_attitude = good_attitude
+
+class PriorityQueue:
+    def __init__(self):
+        self.head = None
+        self.size = 0
+
+    def displayNodes(self):
+        current = self.head
+        if current == None:
+            print("Empty linked list")
+            return 
+        else:
+            while current != None:
+                print(current.info, end=" -> ")
+                current = current.next
+                print(None)  
+
+
+    def addStudent(self, student):
+        node = Node(student)
+        if self.size == 0:
+            self.head = node
+            self.size += 1
+
+
+
+            
+      
+
+    #     if node.info < self.head.info:
+    #       # In this condition, the node we are adding has a higher priority than the node that is currently at the head posiiton (so in our case a smaller number than head ia added)
+    #       # Hence why here we must adjust head to point to the new node as it has a higher priority
+    #       node.next = self.head
+    #       self.head = node
+    #       self.size += 1
+    #     else:
+    #       current = self.head
+    #       previous = current
+    #       while current != None and current.info <= node.info:
+    #         previous = current
+    #         current = current.next
+    #       previous.next = node
+    #       node.next = current
+    #       self.size += 1
+          
+    # def dequeue(self):
+    #   # Dequeue will remain the same as a regular queue since the logic is still the same.
+    #   if self.size == 0:
+    #     print("Your Queue is Empty! Enqueue first.")
+    #   elif self.size == 1:
+    #     print("We are removing:", self.head.info)
+    #     self.head = None
+    #     self.size -= 1
+    #   else:
+    #     print("We are removing:", self.head.info)
+    #     current = self.head
+    #     self.head = self.head.next
+    #     current.next = None
+    #     self.size -= 1
 # appending instances to list
 # list.append(geeks(2, 3))
 # list.append(geeks(12, 13))
