@@ -188,29 +188,20 @@ class PriorityQueue:
             self.size += 1
         else:
             if student.good_attitude == True:
-                while self.head.info.final_grade < node.info.final_grade:
-                    node.next = self.head
-                    self.head = node
-                    self.size +=1
-                    
                 current = self.head
                 previous = self.head
+                
                 while current != None and node.info.final_grade < current.info.final_grade:
                     previous = current
                     current = current.next
+                
+                while node.info.final_grade == current.info.final_grade and node.info.midterm_grade < current.info.midterm_grade: 
+                    node.next = current
+                    previous.next = node
+ 
                 node.next = current
                 previous.next = node
                 self.size += 1
-                
-                if node.info.final_grade == current.info.final_grade and node.info.midterm_grade > current.info.midterm_grade: 
-                    node.next = current
-                    previous.next = node
-                    self.size += 1
-                    
-                elif node.info.final_grade == current.info.final_grade and node.info.midterm_grade <= current.info.midterm_grade:
-                    node.next = current.next
-                    current.next = node 
-                    self.size += 1 
                     
 
                 
