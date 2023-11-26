@@ -19,7 +19,17 @@ def displayLLOptions():
           "\tc. Search for & Delete Node\n",
           "\td. Return to main menu\n"
          )
-
+    
+def displayMatrixMenu():
+    print("Please select an action from the following:",
+        "\n\ta. Add vertex\n",
+        "\tb. Add edge\n",
+        "\tc. Remove vertex\n",
+        "\td. Remove edge\n",
+        "\te. Display vertices with a degree of X or more.\n",
+        "\tf. Return to main menu"
+        )
+    
 class Node:
     def __init__(self, info):
         self.info = info
@@ -219,8 +229,8 @@ class Graph:
         if len(self.adj_matrix) == 0:
             print("The graph is empty.\n")
             return  
-        for row in self.adj_matrix:
-            print(" ".join(map(str, row)))
+        for r in self.adj_matrix:
+            print(" ".join(map(str, r)))
         
             
                 
@@ -269,7 +279,10 @@ def main():
             stack.checkPalindrome()
             
         elif choice == 5:
-            adj_matrix = []
+            vertices = 0
+            graph = Graph(vertices)
+            
+            
             
             
         print()    
