@@ -224,6 +224,23 @@ class Graph:
         self.vertices_number += 1
         for _ in range(self.vertices_number):
             self.adj_matrix.append([0]*self.vertices_number)
+        print("Added vertex", self.vertices_number - 1)
+        
+    def addEdge(self, v1, v2):  
+        if 0 <= v1 < self.vertices_number and 0 <= v2 < self.vertices_number:
+            self.adj_matrix[v1][v2] = 1
+            self.adj_matrix[v2][v1] = 1
+            print("Added an edge between", v1, "and", v2, "\n")
+
+        else:
+          print("Invalid vertex.")
+          
+    def removeVertex(self, vertex):
+        if 0 <= vertex <= self.vertices_number: 
+            del self.adj_matrix[vertex] 
+            for row in self.adj_matrix:
+                del row[vertex] 
+            self.size -= 1 
             
     def displayGraph(self):
         if len(self.adj_matrix) == 0:
@@ -281,6 +298,24 @@ def main():
         elif choice == 5:
             vertices = 0
             graph = Graph(vertices)
+            displayMatrixMenu()
+            matrix_choice = input()
+            
+            while matrix_choice != "f":
+                
+                if matrix_choice == "a":
+                    graph.addVertex()
+                    
+                if matrix_choice == "b":
+                    vertex1 = input("Please enter vertex 1: ")
+                    vertex2 = input("Please enter vertex 2: ")
+                    graph.addEdge(vertex1, vertex2)
+                
+                if matrix_choice == "c":
+                    vertex = input("Please enter the vertex you would like to remove: ")
+                    graph.removeVertex(vertex)
+                    
+                
             
             
             
