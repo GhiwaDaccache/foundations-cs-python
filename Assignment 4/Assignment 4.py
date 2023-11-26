@@ -242,6 +242,16 @@ class Graph:
                 del row[vertex] 
             self.size -= 1 
             
+    def removeEdge(self, v1, v2):  
+        if 0 <= v1 < self.vertices_number and 0 <= v2 < self.vertices_number and self.adj_matrix[v1][v2] == self.adj_matrix[v2][v1] == 1 :
+            self.adj_matrix[v1][v2] = 0
+            self.adj_matrix[v2][v1] = 0
+            print("Removed the edge between", v1, "and", v2, "\n")
+        elif 0 > v1 > self.vertices_number or 0 > v2 > self.vertices_number:
+            print("Invalid vertex ")
+        elif self.adj_matrix[v1][v2] == self.adj_matrix[v2][v1] != 1: 
+            print("No edge exists between vertices")
+            
     def displayGraph(self):
         if len(self.adj_matrix) == 0:
             print("The graph is empty.\n")
