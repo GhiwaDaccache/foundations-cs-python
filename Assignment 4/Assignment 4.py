@@ -201,23 +201,27 @@ class PriorityQueue:
  
                 node.next = current
                 previous.next = node
+                current = node
                 self.size += 1
                     
-
-                
-                
-                
-
-                
-                    
-                
-            
-        
-
-
-
+class Graph:
     
+    def __init__(self, vertices_number):
+        self.vertices_number = vertices_number
+        self.adj_matrix = [[0] * vertices_number for _ in range(vertices_number)]
+    
+    def addVertex(self):
+        self.vertices_number += 1
+        for _ in range(self.vertices_number):
+            self.adj_matrix.append([0]*self.vertices_number)
             
+    def displayGraph(self):
+        if len(self.adj_matrix) == 0:
+            print("The graph is empty.\n")
+            return  
+        for row in self.adj_matrix:
+            print(" ".join(map(str, row)))
+        
             
                 
     
@@ -263,6 +267,10 @@ def main():
             stack = Stack()
             stack.transformList(st)
             stack.checkPalindrome()
+            
+        elif choice == 5:
+            adj_matrix = []
+            
             
         print()    
         displayMenu()
