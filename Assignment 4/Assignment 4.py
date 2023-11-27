@@ -146,55 +146,63 @@ class LinkedList:
   
 class Stack:
     def __init__(self):
+# We create a stack by initializing an empty list of size 0.
         self.elements = []
         self.size = 0
-    
-    def push(self, value):
+
+    def push(self, value): #O(1) it takes a constant amount of time to append to a list.
+# The push method add an element to the stack by appending each element passed as parameter to the list. 
         self.elements.append(value)
         self.size += 1
     
-    def transformList(self, string):
+    def transformList(self, string): #O(N) N being the length of the string. 
+# This method converts a string to a list by pushing every character of the string to the stack.
         for x in string:
             self.push(x)
     
-    def peek(self):
+    def peek(self): #O(1) it only checks the last element of the stack. 
+# If the stack is not empty, it'll return the last element in the list to compare with the first.
         if self.size == 0:
             print("Empty stack.")
         else:
             return self.elements[len(self.elements) - 1]
     
-    def peekReverse(self):
+    def peekReverse(self): #O(1) it only checks the first element of the stack.
+# If the stack is not empty, it'll return the first element in the list to compare with the last.    
         if self.size == 0:
             print("Empty stack.")
         else:
             return self.elements[0]
     
-    def pop(self):
+    def pop(self): #O(1) it deletes the last element of the stack.
+# This function is only called if the first and last element of the stack are the same. 
+# If the stack is not empty, it'll remove the last element of the stack.
         if self.size == 0: 
             print("Empty stack.")
         else:
             self.elements = self.elements[:-1]
             self.size -= 1
     
-    def dequeue(self): 
+    def dequeue(self): #O(1) it deletes the first element of the stack.
+# This function is only called if the first and last element of the stack are the same. 
+# If the stack is not empty, it'll remove the first element of the stack.
         if self.size == 0: 
             print("Empty stack.")
         else:
             self.elements = self.elements[1: ]
             self.size -= 1
-            print(self.elements)
     
-    def checkPalindrome(self):
+    def checkPalindrome(self): #O(N) N being half the length of the list.
+# We start by looping through half of the list, because each time the condition checks out 
         for i in range(len(self.elements) //2):
             while self.size > 1:
                 if self.peek() == self.peekReverse():
                     self.pop()
                     self.dequeue()
-                    print("The string is a palindrome")
                 
                 else:
                     print("The string is not a palindrome")
-                    break
+                    return False
 
 class Student:
     def __init__(self, name, midterm_grade, final_grade, good_attitude):
@@ -335,8 +343,9 @@ def main():
         elif choice == 2:
             st = input("Please enter your string: ")
             stack = Stack()
-            stack.transformList(st)
-            stack.checkPalindrome()
+            stack.transformList(st.lower())
+            if stack.checkPalindrome() != False:
+                print("The string is a palindrome")
             
         elif choice == 5:
             vertices = int(input("Enter the number of vertices: "))
