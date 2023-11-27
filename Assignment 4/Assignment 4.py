@@ -44,7 +44,7 @@ class LinkedList:
         self.tail = None
         self.size = 0
         
-    def addNode(self, value):
+    def addNode(self, value): # O(1) because it takes a constant of time to update the head and tail of a linked list.
         node = Node(value)
 # To add a node to the linked list, we first check if the list is empty by accessing self.size.
 # If it's the case we set the node as the head and tail of the list and increase the size by 1. 
@@ -60,7 +60,7 @@ class LinkedList:
             self.tail = node
             self.size += 1
             
-    def displayNodes(self):
+    def displayNodes(self): #O(N) N being the number of nodes, because the function loops through the linked list.
 # The current variable starts at the head of the list, if it's none it'll state that the list is empty.
 # Otherwise it'll loop through the whole list and print the info of each node until it reaches None (the end of the list).
         current = self.head
@@ -74,7 +74,7 @@ class LinkedList:
           print(None)
           
           
-    def searchNode(self, value):
+    def searchNode(self, value): # O(N) N being the number of nodes, because the function loops through the linked list.
 # The if statement checks if the list is empty by checking the size of the list.
         global indices
         indices = []
@@ -101,7 +101,7 @@ class LinkedList:
         return True
     
 
-    def deleteNode(self, index_list):
+    def deleteNode(self, index_list): #O(N^2) in the for loop N is the length of index list and in the while loop N is the number of nodes.
         current = self.head
         previous = self.head
         loop_index = 0
