@@ -1,16 +1,6 @@
 ##############
 # Assignment 4
 ##############
-indices = []
-def displayMenu():
-    print("Please select a number from the following:",
-        "\n\t1. Singly Linked List\n",
-        "\t2. Check if Palindrome\n",
-        "\t3. Priority Queue\n",
-        "\t4. Evaluate an Infix Expression\n",
-        "\t5. Graph\n",
-        "\t6. Exit"
-        )
 
 def displayLLOptions():
     print("Choose an action: \n",
@@ -37,23 +27,31 @@ class Node:
 
 class LinkedList:
     def __init__(self):
+# We initiate class linked list by setting the head and tail to none since it's still empty.
+#and for the same reason we set size = 0.
         self.head = None
         self.tail = None
         self.size = 0
         
     def addNode(self, value):
         node = Node(value)
+# To add a node to the linked list, we first check if the list is empty by accessing self.size.
+# If it's the case we set the node as the head and tail of the list and increase the size by 1. 
         if self.size == 0:
             self.head = node
             self.tail = node
             self.size += 1
-
+            
+# If the list is not empty, we add the node by changing the next of the tail. It now points to the node, and the node is the new tail.
+# We also increase the size by 1. 
         else:
             self.tail.next = node
             self.tail = node
             self.size += 1
             
     def displayNodes(self):
+# The current variable starts at the head of the list, if it's none it'll state that the list is empty.
+# Otherwise it'll loop through the whole list and print the info of each node until it reaches None (the end of the list).
         current = self.head
         if current == None:
           print("Empty linked list")
@@ -66,11 +64,16 @@ class LinkedList:
           
           
     def searchNode(self, value):
+# The if statement checks if the list is empty by checking the size of the list.
         global indices
         indices = []
         if self.size != 0:
             index = 0
             current = self.head
+# This loop, will itirate through the whole list checking if the info of each node is equal to the given value, until it reaches the end of the list where current will be None.
+# The index variable keeps track of the order of the nodes, which will increase by 1 after each loop. 
+# Whenever the value matches the info, it'll append the index of the node to a list.
+
             while current != None:
                 if current.info == value:
                     indices.append(index)
@@ -80,7 +83,7 @@ class LinkedList:
         else:
           print("List is empty")
           return False
-      
+# If the function returns False (Empty list or value not found), it will not call the deleteNode() method.      
         if len(indices) == 0:
           print("The value is not in the list")
           return False
@@ -91,12 +94,19 @@ class LinkedList:
         current = self.head
         previous = self.head
         loop_index = 0
+# The linked list will have two variables pointing to the nodes, current and previous. 
+# As well as the loop index, that will keep track of the node order. 
+# Then for each element in the index list, we will delete the corresponding node.
         for x in index_list:
+# Whereas this while loop will itirate through the linked list as long as the loop index is not the same as the index in index list and the end of the list is not reached. 
             while loop_index != x and current.next != None:
                 previous = current
                 current = current.next
                 loop_index += 1    
-                
+# When the loop index matches the index in the list and it's the head of the list:
+# We change the head to become the next node. 
+# And set the next of current (old head) to point to None.
+# lastly, we update current and previous to point to the new head to continue the loop. And decrease size by 1.               
             if loop_index == x and current == self.head:   
                 self.head = self.head.next
                 current.next = None
@@ -104,13 +114,20 @@ class LinkedList:
                 previous = self.head
                 self.size -= 1
                 loop_index +=1
-                
+ 
+# When the loop index matches the index in the list and it's in the middle of the list: 
+# We set the next of previous to point to the next node of the one we're trying to delete. 
+# And current becomes the next node.
+# Without forgetting to always decrease size.                
             elif loop_index == x and current.next != None:   
                 previous.next = current.next
                 current = current.next
                 self.size -= 1
                 loop_index +=1
                 
+# When the loop index matches the index in the list and it's at the end of the list:
+# We "detach" the last node from the list by pointing the next of previous to None. 
+# And update tail to previous. 
             elif loop_index == x and current.next == None:
                 previous.next = None
                 self.tail = previous
@@ -128,7 +145,6 @@ class Stack:
     def transformList(self, string):
         for x in string:
             self.push(x)
-        print(self.elements)
     
     def peek(self):
         if self.size == 0:
