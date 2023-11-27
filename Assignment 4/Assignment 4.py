@@ -193,8 +193,9 @@ class Stack:
             self.size -= 1
     
     def checkPalindrome(self): #O(N) N being half the length of the list.
-# We start by looping through half of the list, because each time the condition checks out 
+# We start by looping through half of the list, because each time the condition checks out we remove both first and last element.  
         for i in range(len(self.elements) //2):
+# As long as the list is of size bigger than 1, it checks if the first and last elements are the same, then calls both methods to pop and dequeue.
             while self.size > 1:
                 if self.peek() == self.peekReverse():
                     self.pop()
@@ -225,29 +226,104 @@ class PriorityQueue:
             while current != None:
                 print(current.info.name, end=" -> ")
                 current = current.next  
-
-    def addStudent(self, student):
-        node = Node(student)
-        if self.size == 0:
-            self.head = node
-            self.size += 1
-        else:
-            if student.good_attitude == True:
-                current = self.head
-                previous = self.head
                 
-                while current != None and node.info.final_grade < current.info.final_grade:
-                    previous = current
-                    current = current.next
+# Below are all the tries to solve this function. None worked.  
+    # def addStudent(self, student):
+    #     node = Node(student)
+    #     if self.size == 0:
+    #         self.head = node
+    #         self.size += 1
+    #     else:
+    #         if student.good_attitude == True:
+    #             current = self.head
+    #             previous = self.head
                 
-                while node.info.final_grade == current.info.final_grade and node.info.midterm_grade < current.info.midterm_grade: 
-                    node.next = current
-                    previous.next = node
+    #             while current != None and node.info.final_grade < current.info.final_grade:
+    #                 previous = current
+    #                 current = current.next
+                
+    #             while node.info.final_grade == current.info.final_grade and node.info.midterm_grade < current.info.midterm_grade: 
+    #                 node.next = current
+    #                 previous.next = node
  
-                node.next = current
-                previous.next = node
-                current = node
-                self.size += 1
+    #             node.next = current
+    #             previous.next = node
+    #             current = node
+    #             self.size += 1
+    
+    # def addStudent(self, student):
+        # node = Node(student)
+        # if self.size == 0:
+        #   self.head = node
+        #   self.size += 1
+        # else:
+        #   current = self.head
+        #   previous = self.head
+        #   while (node.info.attitude <= current.info.attitude and node.info.final_grade <= current.info.final_grade and node.info.midterm_grade <= current.info.midterm_grade) or (node.info.attitude < current.info.attitude and node.info.final_grade > current.info.final_grade) or (node.info.attitude < current.info.attitude and node.info.final_grade < current.info.final_grade and node.info.midterm_grade >= current.info.midterm_grade):
+        #     previous = current
+        #     current = current.next
+        #     if current == None:
+        #       break
+        #   node.next = current
+        #   previous.next = node
+        #   self.size += 1
+      
+
+  # def addStudent(self, student):
+  #   node = Node(student)
+  #   if self.size == 0:
+  #       self.head = node
+  #       self.size += 1
+  #   else:
+  #       if student.good_attitude == True:
+  #           while self.head.info.final_grade < node.info.final_grade:
+  #               node.next = self.head
+  #               self.head = node
+  #               self.size +=1
+  
+  #           current = self.head
+  #           previous = self.head
+  #           while current != None and node.info.final_grade < current.info.final_grade:
+  #               previous = current
+  #               current = current.next
+  #           node.next = current
+  #           previous.next = node
+  #           self.size += 1
+  
+  #           if node.info.final_grade == current.info.final_grade and node.info.midterm_grade > current.info.midterm_grade: 
+  #               node.next = current
+  #               previous.next = node
+  #               self.size += 1
+  
+  #           elif node.info.final_grade == current.info.final_grade and node.info.midterm_grade <= current.info.midterm_grade:
+  #               node.next = current.next
+  #               current.next = node 
+  #               self.size += 1 
+
+
+
+
+
+  # def addStudent(self, student):
+  #     node = Node(student)
+  #     if self.size == 0:
+  #         self.head = node
+  #         self.size += 1
+  #     else:
+  #         if student.good_attitude == True and self.head.info.final_grade < node.info.final_grade:
+  #             node.next = self.head
+  #             self.head = node
+  #             self.size +=1
+
+  #         else:
+  #             current = self.head
+  #             previous = self.head
+  #             while current != None and current.info.final_grade > node.info.final_grade :
+  #                 previous = current
+  #                 current = current.next
+  #             previous.next = node
+  #             node.next = current
+  #             self.size += 1
                     
 class Graph:
     
@@ -255,15 +331,18 @@ class Graph:
         self.vertices_number = vertices_number
         self.adj_matrix = [[0] * vertices_number for _ in range(vertices_number)]
     
-    def addVertex(self):
+    def addVertex(self): #O(V) because it iterates over the whole matrix. 
+# To add a vertex, we append (0) to each row, then adjust the matrix to have the same amount of rows.
         self.vertices_number += 1
         for row in self.adj_matrix:
             row.append(0)
         self.adj_matrix.append([0]*self.vertices_number)
         print("Added vertex", self.vertices_number - 1)
         
-    def addEdge(self, v1, v2):  
+    def addEdge(self, v1, v2):  #O(1) because it takes a constant amount of time to change the value to 1.
+# To add an edge we first check if the vertices the user is trying to "link" exist. 
         if 0 <= v1 < self.vertices_number and 0 <= v2 < self.vertices_number:
+# Once checked out, it changes both values in the matrix to 1, indicating the presence of an edge.
             self.adj_matrix[v1][v2] = 1
             self.adj_matrix[v2][v1] = 1
             print("Added an edge between", v1, "and", v2, "\n")
@@ -271,15 +350,20 @@ class Graph:
         else:
           print("Invalid vertex.")
           
-    def removeVertex(self, vertex):
+    def removeVertex(self, vertex): #O(V) because it loops through every row.
+# To add an edge we first check if the vertex esists.
         if 0 <= vertex <= self.vertices_number: 
+# Then the program deletes the row at that exact vertex. 
             del self.adj_matrix[vertex] 
+# The loop deletes all values at index vertex number to remove all edges.
             for row in self.adj_matrix:
                 del row[vertex] 
             self.vertices_number -= 1 
             
-    def removeEdge(self, v1, v2):  
+    def removeEdge(self, v1, v2): #O(1) because it takes a constant amount of time to change the value.
+# To remove an edge we first check if the vertices the user is trying to "unlink" exist. 
         if 0 <= v1 < self.vertices_number and 0 <= v2 < self.vertices_number and self.adj_matrix[v1][v2] == self.adj_matrix[v2][v1] == 1 :
+# Once checked out, it changes both values in the matrix to 1, indicating the absence of an edge.           
             self.adj_matrix[v1][v2] = 0
             self.adj_matrix[v2][v1] = 0
             print("Removed the edge between", v1, "and", v2, "\n")
@@ -288,10 +372,11 @@ class Graph:
         elif self.adj_matrix[v1][v2] == self.adj_matrix[v2][v1] != 1: 
             print("No edge exists between vertices")
             
-    def displayGraph(self):
-        if len(self.adj_matrix) == 0:
+    def displayGraph(self): #O(V) 
+        if len(self.vertices_number) == 0:
             print("The graph is empty.\n")
             return  
+# If the graph is not empty it print every vertex in the adjanceny matrix.
         for r in self.adj_matrix:
             print(" ".join(map(str, r)))
             
@@ -308,7 +393,9 @@ def main():
     print()
     displayMenu()
     choice = int(input())
-    while choice != 6:
+    limit = 0 
+
+    while choice != 6 and limit < 4:
         if choice == 1:
             displayLLOptions()
             LL_choice = input()
@@ -346,8 +433,15 @@ def main():
             stack.transformList(st.lower())
             if stack.checkPalindrome() != False:
                 print("The string is a palindrome")
+        
+        elif choice == 3:
+            pass
+        
+        elif choice == 4:
+            pass
             
         elif choice == 5:
+            
             vertices = int(input("Enter the number of vertices: "))
             graph = Graph(vertices)
             displayMatrixMenu()
@@ -393,13 +487,11 @@ def main():
                 
             print("You're back to main menu\n")
                     
-                
-                    
-                
-            
-            
-            
-            
+        else: 
+            print("Please choose from the list")
+            limit += 1
+
+
         print()    
         displayMenu()
         choice = int(input())
