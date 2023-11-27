@@ -222,8 +222,9 @@ class Graph:
     
     def addVertex(self):
         self.vertices_number += 1
-        for _ in range(self.vertices_number):
-            self.adj_matrix.append([0]*self.vertices_number)
+        for row in self.adj_matrix:
+            row.append(0)
+        self.adj_matrix.append([0]*self.vertices_number)
         print("Added vertex", self.vertices_number - 1)
         
     def addEdge(self, v1, v2):  
@@ -240,7 +241,7 @@ class Graph:
             del self.adj_matrix[vertex] 
             for row in self.adj_matrix:
                 del row[vertex] 
-            self.size -= 1 
+            self.vertices_number -= 1 
             
     def removeEdge(self, v1, v2):  
         if 0 <= v1 < self.vertices_number and 0 <= v2 < self.vertices_number and self.adj_matrix[v1][v2] == self.adj_matrix[v2][v1] == 1 :
@@ -258,7 +259,9 @@ class Graph:
             return  
         for r in self.adj_matrix:
             print(" ".join(map(str, r)))
-        
+            
+    def displayVertices(self):
+        pass
             
                 
     
@@ -289,7 +292,10 @@ def main():
                     value = int(input("Please enter the value of the node/s you wish to delete: "))
                     if linked_list.searchNode(value) == True:
                         linked_list.deleteNode(indices)
-                        print("Node/s deleted.")         
+                        print("Node/s deleted.") 
+                        print()
+                        linked_list.displayNodes()
+                        print()
                 else:
                     print("Please choose from the list")
                 
@@ -306,7 +312,7 @@ def main():
             stack.checkPalindrome()
             
         elif choice == 5:
-            vertices = 0
+            vertices = int(input("Enter the number of vertices: "))
             graph = Graph(vertices)
             displayMatrixMenu()
             matrix_choice = input()
@@ -314,16 +320,44 @@ def main():
             while matrix_choice != "f":
                 
                 if matrix_choice == "a":
-                    graph.addVertex()
+                        graph.addVertex()
+                        print()
+                        graph.displayGraph()
+                        print()
                     
-                if matrix_choice == "b":
-                    vertex1 = input("Please enter vertex 1: ")
-                    vertex2 = input("Please enter vertex 2: ")
+                elif matrix_choice == "b":
+                    vertex1 = int(input("Please enter vertex 1: "))
+                    vertex2 = int(input("Please enter vertex 2: "))
                     graph.addEdge(vertex1, vertex2)
+                    print()
+                    graph.displayGraph()
+                    print()
                 
-                if matrix_choice == "c":
-                    vertex = input("Please enter the vertex you would like to remove: ")
+                elif matrix_choice == "c":
+                    vertex = int(input("Please enter the vertex you would like to remove: "))
                     graph.removeVertex(vertex)
+                    print()
+                    graph.displayGraph()
+                    print()
+                
+                elif matrix_choice == "d":
+                    vertex_a = int(input("Please enter vertex 1: "))
+                    vertex_b = int(input("Please enter vertex 2: "))
+                    graph.removeEdge(vertex_a, vertex_b) 
+                    print()
+                    graph.displayGraph()
+                    print()
+                    
+                else:
+                    print("Please choose from the list")
+                
+                print()
+                displayMatrixMenu() 
+                matrix_choice = input()
+                
+            print("You're back to main menu\n")
+                    
+                
                     
                 
             
