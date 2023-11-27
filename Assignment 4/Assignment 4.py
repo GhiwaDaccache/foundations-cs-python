@@ -2,6 +2,16 @@
 # Assignment 4
 ##############
 
+def displayMenu():
+    print("Please select a number from the following:",
+        "\n\t1. Singly Linked List\n",
+        "\t2. Check if Palindrome\n",
+        "\t3. Priority Queue\n",
+        "\t4. Evaluate an Infix Expression\n",
+        "\t5. Graph\n",
+        "\t6. Exit"
+        )
+    
 def displayLLOptions():
     print("Choose an action: \n",
           "\ta. Add Node\n",
@@ -21,6 +31,7 @@ def displayMatrixMenu():
         )
     
 class Node:
+# We create a new node by initiating class node with next pointing to none(still not in linked list), and setting info as parameter to pass to the node. 
     def __init__(self, info):
         self.info = info
         self.next = None
@@ -28,7 +39,7 @@ class Node:
 class LinkedList:
     def __init__(self):
 # We initiate class linked list by setting the head and tail to none since it's still empty.
-#and for the same reason we set size = 0.
+# And for the same reason we set size = 0.
         self.head = None
         self.tail = None
         self.size = 0
