@@ -43,4 +43,66 @@ class BinaryTree:
                     print("Added", current.left.value, "and", current.right.value, "to the queue.")
                     print()
                     
-                
+# tree = BinaryTree()
+# values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+# for x in values:
+#     tree.insert(x)
+
+
+# Binary Tree implementation from list (parent [i], left child [2i], right child [2i +1]):
+class BinaryTreeList:
+    def __init__(self):
+        self.root = None
+        
+    def convertList(self, lst):
+        nodes = [None]
+        
+        
+        for val in lst:
+          if val != None:
+            lst.append(Node(val))
+          else:
+            lst.append(None) 
+      
+        for i in range(1, (len(lst) -1)):
+          if nodes[i] != None:
+            if (len(lst) - 1) > 2*i:
+              nodes[i].left = nodes[2*i]
+            else:
+              None
+            if (len(lst) -1) > (2*i +1):
+              nodes[i].right = nodes[2*i +1]
+            else:
+              None
+      
+  
+
+ 
+
+def display_list(lst):
+  print(lst)
+
+# Test example
+values = [None, 5, 7, 2, 4, 3, 14, None, 6, 1, None, None, None, None, 8, None, None, None, None, None, None, None, None, 7]
+tree_root = create_binary_tree_from_list(values)
+
+print("Binary Tree from List:")
+display_list(values)
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
