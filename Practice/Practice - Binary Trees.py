@@ -55,7 +55,7 @@ class BinaryTreeList:
         self.root = None
         
     def convertList(self, lst):
-        nodes = [None]
+        nodes = []
         for val in lst:
           if val != None:
             nodes.append(Node(val))
@@ -63,21 +63,22 @@ class BinaryTreeList:
             nodes.append(None) 
       
         for i in range(1, (len(lst) -1)):
+            
           if nodes[i] != None:
-            if (len(lst) - 1) > 2*i:
+              
+            if (len(lst) - 1) >= 2*i:
               nodes[i].left = nodes[2*i]
             else:
               None
-            if (len(lst) -1) > (2*i +1):
+              
+            if (len(lst) -1) >= (2*i +1):
               nodes[i].right = nodes[2*i +1]
             else:
               None
                   
-    def display_list(lst):
-        print(lst)
 
 # Test example
-values = [None, 5, 7, 2, 4, 3, 14, None, 6, 1, None, None, None, None, 8, None, None, None, None, None, None, None, None, 7]
+values = [None, 5, 7, 2, 4, 3, 14, None, None, None, 6, 1, None, 8, None, None, None, None, None, None, None, None, None, None, None, None, 7]
 tree2 = BinaryTreeList()
 tree2.convertList(values)
 print("Binary Tree from List:")
