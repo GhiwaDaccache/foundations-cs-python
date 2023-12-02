@@ -42,12 +42,21 @@ class BinaryTree:
                     queue.append(current.right)
                     print("Added", current.left.value, "and", current.right.value, "to the queue.")
                     print()
- 
+            
+    def printTree(self,current):
+        if current != None:
+          print(current.value) # For pre-order
+          self.printTree(current.left)
+          # print(current.data) # For in-order
+          self.printTree(current.right)
+          # print(current.data) # For post-order
+
 # Test example
 # tree = BinaryTree()
 # values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 # for x in values:
 #     tree.insert(x)
+# tree.printTree(tree.root)
 
 
 # Binary Tree implementation from list (parent [i], left child [2i], right child [2i +1]):
@@ -77,6 +86,7 @@ class BinaryTreeList:
             else:
               None
                   
+    
 # Test example
 # values = [None, 5, 7, 2, 4, 3, 14, None, None, None, 6, 1, None, 8, None, None, None, None, None, None, None, None, None, None, None, None, 7]
 # tree2 = BinaryTreeList()
@@ -112,25 +122,39 @@ class BinarySearchTree:
                     else:
                         current = current.right
    
+    def printTree(self,current):
+        if current != None:
+          print(current.value) # For pre-order
+          self.printTree(current.left)
+          # print(current.data) # For in-order
+          self.printTree(current.right)
+          # print(current.data) # For post-order
 
+# Test example
+# bst = BinarySearchTree()
+# bst.insertBST(10)
+# bst.insertBST(5)
+# bst.insertBST(13)
+# bst.insertBST(4)
+# bst.insertBST(7)
+# bst.insertBST(2)
+# bst.insertBST(9)
+# bst.insertBST(11)
+# bst.insertBST(6)
+# bst.insertBST(4.0)
+# bst.printTree(bst.root)
 
-
-bst = BinarySearchTree()
-print(bst.root)  # Tree is empty
-bst.insertBST(10)
-bst.insertBST(5)
-bst.insertBST(13)
-bst.insertBST(4)
-bst.insertBST(7)
-bst.insertBST(2)
-bst.insertBST(9)
-bst.insertBST(11)
-bst.insertBST(6)
-bst.insertBST(4.0)
-
-
+    def checkBinary(self):
+        current = self.root
+        while current != None:
+           if current.value > current.left.value and current.value < current.right.value:
+               current = current.left
+           else:
+               print("The tree is not a Binary Search Tree.")
+        
+               
 # coming ex:
-# Check if binary tree
+# Check if binary search tree
 # if not convert it
 # search
 # delete
