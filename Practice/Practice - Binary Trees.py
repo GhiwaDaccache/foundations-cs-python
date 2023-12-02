@@ -129,7 +129,22 @@ class BinarySearchTree:
           # print(current.data) # For in-order
           self.printTree(current.right)
           # print(current.data) # For post-order
+          
 
+    def checkBinary(self, node):
+        if node == None:
+          return True
+          
+        if node.left != None and node.value < node.left.value:
+            return False
+    
+        if node.right != None and node.value > node.right.value:
+            return False
+    
+        self.checkBinary(node.left)
+        self.checkBinary(node.right)
+        return True
+        
 # Test example
 # bst = BinarySearchTree()
 # bst.insertBST(10)
@@ -143,16 +158,10 @@ class BinarySearchTree:
 # bst.insertBST(6)
 # bst.insertBST(4.0)
 # bst.printTree(bst.root)
+# bst.checkBinary(bst.root)
 
-    def checkBinary(self):
-        current = self.root
-        while current != None:
-           if current.value > current.left.value and current.value < current.right.value:
-               current = current.left
-           else:
-               print("The tree is not a Binary Search Tree.")
-        
-               
+
+             
 # coming ex:
 # Check if binary search tree
 # if not convert it
