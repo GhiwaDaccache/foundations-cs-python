@@ -102,11 +102,10 @@ class BinarySearchTree:
                     if current.left == None:
                         current.left = node
                         current = None
-                        print(1)
                     else:
                         current = current.left
                     
-                elif node.value > current.value:
+                elif node.value >= current.value:
                     if current.right == None:
                         current.right = node
                         current = None
