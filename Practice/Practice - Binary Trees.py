@@ -163,7 +163,6 @@ class BinarySearchTree:
 
              
 # coming ex:
-# Check if binary search tree
 # if not convert it
 # search
 # delete
