@@ -42,7 +42,8 @@ class BinaryTree:
                     queue.append(current.right)
                     print("Added", current.left.value, "and", current.right.value, "to the queue.")
                     print()
-                    
+ 
+# Test example
 # tree = BinaryTree()
 # values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 # for x in values:
@@ -76,14 +77,64 @@ class BinaryTreeList:
             else:
               None
                   
-
 # Test example
-values = [None, 5, 7, 2, 4, 3, 14, None, None, None, 6, 1, None, 8, None, None, None, None, None, None, None, None, None, None, None, None, 7]
-tree2 = BinaryTreeList()
-tree2.convertList(values)
-print("Binary Tree from List:")
-tree2.display_list()
+# values = [None, 5, 7, 2, 4, 3, 14, None, None, None, 6, 1, None, 8, None, None, None, None, None, None, None, None, None, None, None, None, 7]
+# tree2 = BinaryTreeList()
+# tree2.convertList(values)
+# print("Binary Tree from List:")
+# tree2.display_list()
 
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
+        
+    def insertBST(self, value):
+        node = Node(value)
+        
+        if self.root == None:
+            self.root = node
+        
+        else:
+            current = self.root
+            while current != None:
+                
+                if node.value < current.value:
+                    if current.left == None:
+                        current.left = node
+                        current = None
+                        print(1)
+                    else:
+                        current = current.left
+                    
+                elif node.value > current.value:
+                    if current.right == None:
+                        current.right = node
+                        current = None
+                    else:
+                        current = current.right
+   
+
+
+
+bst = BinarySearchTree()
+print(bst.root)  # Tree is empty
+bst.insertBST(10)
+bst.insertBST(5)
+bst.insertBST(13)
+bst.insertBST(4)
+bst.insertBST(7)
+bst.insertBST(2)
+bst.insertBST(9)
+bst.insertBST(11)
+bst.insertBST(6)
+bst.insertBST(4.0)
+
+
+# coming ex:
+# Check if binary tree
+# if not convert it
+# search
+# delete
     
     
     
