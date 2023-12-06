@@ -176,8 +176,6 @@ class BinarySearchTree:
 
              
 # coming ex:
-# search
-# delete
 # searching
 # sorting 
     
