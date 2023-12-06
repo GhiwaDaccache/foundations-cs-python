@@ -60,11 +60,7 @@ class BinaryTree:
 
 
 # Binary Tree implementation from list (parent [i], left child [2i], right child [2i +1]):
-class BinaryTreeList:
-    def __init__(self):
-        self.root = None
-        
-    def convertList(self, lst):
+    def convertListToTree(self, lst):
         nodes = []
         for val in lst:
           if val != None:
@@ -89,8 +85,8 @@ class BinaryTreeList:
     
 # Test example
 # values = [None, 5, 7, 2, 4, 3, 14, None, None, None, 6, 1, None, 8, None, None, None, None, None, None, None, None, None, None, None, None, 7]
-# tree2 = BinaryTreeList()
-# tree2.convertList(values)
+# tree2 = BinaryTree()
+# tree2.convertListToTree(values)
 # print("Binary Tree from List:")
 # tree2.display_list()
 
@@ -144,6 +140,21 @@ class BinarySearchTree:
         self.checkBinary(node.left)
         self.checkBinary(node.right)
         return True
+    
+    def searchBST(self, value):
+        if self.root == None:
+            print("Empty tree.")
+        else:
+            current = self.root
+            while current != None:
+                if current.value == value:
+                    return True 
+                elif value >= current.value:
+                    current = current.right
+                elif value < current.value:
+                    current = current.left
+            return False
+                    
         
 # Test example
 # bst = BinarySearchTree()
@@ -159,13 +170,16 @@ class BinarySearchTree:
 # bst.insertBST(4.0)
 # bst.printTree(bst.root)
 # bst.checkBinary(bst.root)
+# print(bst.searchBST(5))
+# print(bst.searchBST(17))
 
 
              
 # coming ex:
-# if not convert it
 # search
 # delete
+# searching
+# sorting 
     
     
     
